@@ -1046,9 +1046,6 @@ a,
   background-color: #ccc;
   border-color: #2f79aa;
 }
-/* ------------------------------------------------------------------------- */
-/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
-/* ------------------------------------------------------------------------- */
 .s-MovieDialog > .size {
   min-width: 650px;
   width: 650px;
@@ -1085,5 +1082,5 @@ a,
   width: 215px;
 }
 .s-MovieDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: 400px;
 }
