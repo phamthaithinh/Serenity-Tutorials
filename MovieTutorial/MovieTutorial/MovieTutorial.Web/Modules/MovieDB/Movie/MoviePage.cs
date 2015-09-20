@@ -1,6 +1,7 @@
 ﻿
 
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "MovieDB/Movie", typeof(MovieTutorial.MovieDB.Pages.MovieController))]
+[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "Movie Database/Movies", 
+    typeof(MovieTutorial.MovieDB.Pages.MovieController), icon: "icon-camcorder")]
 
 namespace MovieTutorial.MovieDB.Pages
 {
