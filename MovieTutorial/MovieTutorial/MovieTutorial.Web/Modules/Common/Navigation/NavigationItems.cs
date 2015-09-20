@@ -2,9 +2,13 @@ using Serenity;
 using Serenity.Navigation;
 using Northwind = MovieTutorial.Northwind.Pages;
 using Administration = MovieTutorial.Administration.Pages;
+using MovieDB = MovieTutorial.MovieDB.Pages;
 using Common = MovieTutorial.Common.Pages;
 
 [assembly: NavigationLink(1000, "Dashboard", url: "~/", permission: "", icon: "icon-speedometer")]
+
+[assembly: NavigationMenu(2000, "Movie Database", icon: "icon-film")]
+[assembly: NavigationLink(2100, "Movie Database/Movies", typeof(MovieDB.MovieController), icon: "icon-camcorder")]
 
 [assembly: NavigationMenu(8000, "Northwind", icon: "icon-anchor")]
 [assembly: NavigationLink(8200, "Northwind/Customers", typeof(Northwind.CustomerController), icon: "icon-wallet")]
