@@ -284,6 +284,8 @@
     <Compile Include="Administration\Role\RoleGrid.cs" />
     <Compile Include="Administration\Role\RoleDialog.cs" />
     <Compile Include="Administration\UserPermission\UserPermissionDialog.cs" />
+    <Compile Include="MovieDB\Movie\MovieGrid.cs" />
+    <Compile Include="MovieDB\Movie\MovieDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Imports\FormContexts\FormContexts.log">

@@ -1046,3 +1046,44 @@ a,
   background-color: #ccc;
   border-color: #2f79aa;
 }
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+.s-MovieDialog > .size {
+  min-width: 650px;
+  width: 650px;
+}
+.s-MovieDialog .tab-pane {
+  height: auto;
+}
+.s-MovieDialog .caption {
+  width: 150px;
+}
+.s-MovieDialog .editor {
+  width: 400px;
+}
+.s-MovieDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-MovieDialog .s-Form .editor.dateQ {
+  width: 383px;
+}
+.s-MovieDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-MovieDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 323px;
+}
+.s-MovieDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 56px;
+  margin-left: 4px;
+}
+.s-MovieDialog .s-Form .editor.has-inplace-button {
+  width: 378px;
+}
+.s-MovieDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-MovieDialog .s-PropertyGrid .categories {
+  height: 260px;
+}

@@ -789,6 +789,7 @@
     <Content Include="Modules\Administration\Language\LanguageIndex.cshtml" />
     <Content Include="Modules\Administration\Translation\TranslationIndex.cshtml" />
     <Content Include="Modules\Administration\Role\RoleIndex.cshtml" />
+    <Content Include="Modules\MovieDB\Movie\MovieIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -949,6 +950,12 @@
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRow.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionRepository.cs" />
     <Compile Include="Modules\Administration\UserPermission\UserPermissionEndpoint.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MovieRow.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MovieColumns.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MovieForm.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MovieRepository.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MovieEndpoint.cs" />
+    <Compile Include="Modules\MovieDB\Movie\MoviePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

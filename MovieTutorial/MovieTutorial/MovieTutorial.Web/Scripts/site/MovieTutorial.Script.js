@@ -5,6 +5,7 @@
 	global.MovieTutorial.Administration = global.MovieTutorial.Administration || {};
 	global.MovieTutorial.Common = global.MovieTutorial.Common || {};
 	global.MovieTutorial.Membership = global.MovieTutorial.Membership || {};
+	global.MovieTutorial.MovieDB = global.MovieTutorial.MovieDB || {};
 	global.MovieTutorial.Northwind = global.MovieTutorial.Northwind || {};
 	ss.initAssembly($asm, 'MovieTutorial.Script');
 	////////////////////////////////////////////////////////////////////////////////
@@ -455,6 +456,20 @@
 	};
 	$MovieTutorial_Membership_LoginPanel.__typeName = 'MovieTutorial.Membership.LoginPanel';
 	global.MovieTutorial.Membership.LoginPanel = $MovieTutorial_Membership_LoginPanel;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.MovieDialog
+	var $MovieTutorial_MovieDB_MovieDialog = function() {
+		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
+	};
+	$MovieTutorial_MovieDB_MovieDialog.__typeName = 'MovieTutorial.MovieDB.MovieDialog';
+	global.MovieTutorial.MovieDB.MovieDialog = $MovieTutorial_MovieDB_MovieDialog;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.MovieGrid
+	var $MovieTutorial_MovieDB_MovieGrid = function(container) {
+		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
+	};
+	$MovieTutorial_MovieDB_MovieGrid.__typeName = 'MovieTutorial.MovieDB.MovieGrid';
+	global.MovieTutorial.MovieDB.MovieGrid = $MovieTutorial_MovieDB_MovieGrid;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CategoryDialog
 	var $MovieTutorial_Northwind_CategoryDialog = function() {
@@ -1590,6 +1605,8 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Membership_LoginPanel, $asm, {}, ss.makeGenericType(Serenity.PropertyDialog$1, [Object]), [Serenity.IDialog]);
+	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
+	ss.initClass($MovieTutorial_MovieDB_MovieGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_Northwind_CategoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CategoryForm, $asm, {
 		get_categoryName: function() {
@@ -2103,6 +2120,8 @@
 	ss.setMetadata($MovieTutorial_Administration_UserDialog, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Administration.User'), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($MovieTutorial_Administration_UserGrid, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($MovieTutorial_Administration_UserDialog), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($MovieTutorial_Membership_LoginPanel, { attr: [new Serenity.PanelAttribute(), new Serenity.FormKeyAttribute('Membership.Login')] });
+	ss.setMetadata($MovieTutorial_MovieDB_MovieDialog, { attr: [new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.FormKeyAttribute('MovieDB.Movie'), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
+	ss.setMetadata($MovieTutorial_MovieDB_MovieGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Movie'), new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_MovieDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
 	ss.setMetadata($MovieTutorial_Northwind_CategoryDialog, { attr: [new Serenity.IdPropertyAttribute('CategoryID'), new Serenity.NamePropertyAttribute('CategoryName'), new Serenity.FormKeyAttribute('Northwind.Category'), new Serenity.LocalTextPrefixAttribute('Northwind.Category'), new Serenity.ServiceAttribute('Northwind/Category')] });
 	ss.setMetadata($MovieTutorial_Northwind_CategoryGrid, { attr: [new Serenity.ColumnsKeyAttribute('Northwind.Category'), new Serenity.IdPropertyAttribute('CategoryID'), new Serenity.NamePropertyAttribute('CategoryName'), new Serenity.DialogTypeAttribute($MovieTutorial_Northwind_CategoryDialog), new Serenity.LocalTextPrefixAttribute('Northwind.Category'), new Serenity.ServiceAttribute('Northwind/Category')] });
 	ss.setMetadata($MovieTutorial_Northwind_CustomerCustomerDemoDialog, { attr: [new Serenity.IdPropertyAttribute('ID'), new Serenity.NamePropertyAttribute('CustomerID'), new Serenity.FormKeyAttribute('Northwind.CustomerCustomerDemo'), new Serenity.LocalTextPrefixAttribute('Northwind.CustomerCustomerDemo'), new Serenity.ServiceAttribute('Northwind/CustomerCustomerDemo')] });
