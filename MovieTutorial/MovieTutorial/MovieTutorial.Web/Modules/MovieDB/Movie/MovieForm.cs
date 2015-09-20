@@ -14,7 +14,9 @@ namespace MovieTutorial.MovieDB.Forms
     public class MovieForm
     {
         public String Title { get; set; }
+        [TextAreaEditor(Rows = 3)]
         public String Description { get; set; }
+        [TextAreaEditor(Rows = 8)]
         public String Storyline { get; set; }
         public Int32 Year { get; set; }
         public DateTime ReleaseDate { get; set; }
