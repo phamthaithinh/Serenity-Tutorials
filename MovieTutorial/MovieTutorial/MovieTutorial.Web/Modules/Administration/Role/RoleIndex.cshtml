@@ -1,0 +1,14 @@
+
+@{
+    ViewBag.Title = Serenity.LocalText.Get("Db.Administration.Role.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new MovieTutorial.Administration.RoleGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

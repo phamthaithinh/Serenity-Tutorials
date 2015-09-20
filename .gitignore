@@ -1,0 +1,12 @@
+.vs/
+*.suo
+*.user
+**/App_Data/*.ldf
+**/App_Data/*.mdf
+**/bin/Debug/
+**/bin/Release/
+packages/
+obj/
+**/*.Web/bin
+**/*.Script/bin
+**/*.Test/bin

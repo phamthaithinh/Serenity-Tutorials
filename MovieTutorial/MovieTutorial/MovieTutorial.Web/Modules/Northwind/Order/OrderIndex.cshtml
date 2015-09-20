@@ -1,0 +1,15 @@
+
+@{
+    ViewBag.Title = Serenity.LocalText.Get("Db.Northwind.Order.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new MovieTutorial.Northwind.OrderGrid($('#GridDiv'), {
+        });
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>
