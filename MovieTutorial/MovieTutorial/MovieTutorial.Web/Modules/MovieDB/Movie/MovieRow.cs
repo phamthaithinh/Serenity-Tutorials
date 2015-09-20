@@ -58,7 +58,7 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.ReleaseDate[this] = value; }
         }
 
-        [DisplayName("Runtime")]
+        [DisplayName("Runtime (mins)")]
         public Int32? Runtime
         {
             get { return Fields.Runtime[this]; }
