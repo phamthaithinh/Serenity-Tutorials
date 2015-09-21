@@ -1606,7 +1606,16 @@
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Membership_LoginPanel, $asm, {}, ss.makeGenericType(Serenity.PropertyDialog$1, [Object]), [Serenity.IDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
-	ss.initClass($MovieTutorial_MovieDB_MovieGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
+	ss.initClass($MovieTutorial_MovieDB_MovieGrid, $asm, {
+		getQuickSearchFields: function() {
+			var $t1 = [];
+			$t1.push({ name: '', title: 'all' });
+			$t1.push({ name: 'Description', title: 'description' });
+			$t1.push({ name: 'Storyline', title: 'storyline' });
+			$t1.push({ name: 'Year', title: 'year' });
+			return $t1;
+		}
+	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_Northwind_CategoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CategoryForm, $asm, {
 		get_categoryName: function() {
