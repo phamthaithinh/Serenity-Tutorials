@@ -823,6 +823,7 @@
     <Compile Include="Modules\Common\Imports\ScriptFormatterTypes.cs">
       <DependentUpon>ScriptFormatterTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150924_142200_MovieKind.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150923_172700_SampleMovies.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150915_185137_Movie.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20141123_155100_ProductImage.cs" />
