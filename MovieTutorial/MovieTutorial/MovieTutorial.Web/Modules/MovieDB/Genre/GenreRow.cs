@@ -14,6 +14,7 @@ namespace MovieTutorial.MovieDB.Entities
     [ReadPermission("Administration")]
     [ModifyPermission("Administration")]
     [JsonConverter(typeof(JsonRowConverter))]
+    [LookupScript("MovieDB.Genre")]
     public sealed class GenreRow : Row, IIdRow, INameRow
     {
         [DisplayName("Genre Id"), Identity]
