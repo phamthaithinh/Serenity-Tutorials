@@ -12,13 +12,10 @@ namespace MovieTutorial.Northwind
     [Imported, Serializable, PreserveMemberCase]
     public partial class ProductRow
     {
-        [InlineConstant]
-        public const string IdProperty = "ProductID";
-        [InlineConstant]
-        public const string NameProperty = "ProductName";
-        [InlineConstant]
-        public const string LocalTextPrefix = "Northwind.Product";
-
+        [InlineConstant] public const string IdProperty = "ProductID";
+        [InlineConstant] public const string NameProperty = "ProductName";
+        [InlineConstant] public const string LocalTextPrefix = "Northwind.Product";
+    
         public Int32? ProductID { get; set; }
         public String ProductName { get; set; }
         public String ProductImage { get; set; }
@@ -44,62 +41,37 @@ namespace MovieTutorial.Northwind
         public String CategoryName { get; set; }
         public String CategoryDescription { get; set; }
         public byte[] CategoryPicture { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant]
-            public const string ProductID = "ProductID";
-            [InlineConstant]
-            public const string ProductName = "ProductName";
-            [InlineConstant]
-            public const string ProductImage = "ProductImage";
-            [InlineConstant]
-            public const string Discontinued = "Discontinued";
-            [InlineConstant]
-            public const string SupplierID = "SupplierID";
-            [InlineConstant]
-            public const string CategoryID = "CategoryID";
-            [InlineConstant]
-            public const string QuantityPerUnit = "QuantityPerUnit";
-            [InlineConstant]
-            public const string UnitPrice = "UnitPrice";
-            [InlineConstant]
-            public const string UnitsInStock = "UnitsInStock";
-            [InlineConstant]
-            public const string UnitsOnOrder = "UnitsOnOrder";
-            [InlineConstant]
-            public const string ReorderLevel = "ReorderLevel";
-            [InlineConstant]
-            public const string SupplierCompanyName = "SupplierCompanyName";
-            [InlineConstant]
-            public const string SupplierContactName = "SupplierContactName";
-            [InlineConstant]
-            public const string SupplierContactTitle = "SupplierContactTitle";
-            [InlineConstant]
-            public const string SupplierAddress = "SupplierAddress";
-            [InlineConstant]
-            public const string SupplierCity = "SupplierCity";
-            [InlineConstant]
-            public const string SupplierRegion = "SupplierRegion";
-            [InlineConstant]
-            public const string SupplierPostalCode = "SupplierPostalCode";
-            [InlineConstant]
-            public const string SupplierCountry = "SupplierCountry";
-            [InlineConstant]
-            public const string SupplierPhone = "SupplierPhone";
-            [InlineConstant]
-            public const string SupplierFax = "SupplierFax";
-            [InlineConstant]
-            public const string SupplierHomePage = "SupplierHomePage";
-            [InlineConstant]
-            public const string CategoryName = "CategoryName";
-            [InlineConstant]
-            public const string CategoryDescription = "CategoryDescription";
-            [InlineConstant]
-            public const string CategoryPicture = "CategoryPicture";
+            [InlineConstant] public const string ProductID = "ProductID";
+            [InlineConstant] public const string ProductName = "ProductName";
+            [InlineConstant] public const string ProductImage = "ProductImage";
+            [InlineConstant] public const string Discontinued = "Discontinued";
+            [InlineConstant] public const string SupplierID = "SupplierID";
+            [InlineConstant] public const string CategoryID = "CategoryID";
+            [InlineConstant] public const string QuantityPerUnit = "QuantityPerUnit";
+            [InlineConstant] public const string UnitPrice = "UnitPrice";
+            [InlineConstant] public const string UnitsInStock = "UnitsInStock";
+            [InlineConstant] public const string UnitsOnOrder = "UnitsOnOrder";
+            [InlineConstant] public const string ReorderLevel = "ReorderLevel";
+            [InlineConstant] public const string SupplierCompanyName = "SupplierCompanyName";
+            [InlineConstant] public const string SupplierContactName = "SupplierContactName";
+            [InlineConstant] public const string SupplierContactTitle = "SupplierContactTitle";
+            [InlineConstant] public const string SupplierAddress = "SupplierAddress";
+            [InlineConstant] public const string SupplierCity = "SupplierCity";
+            [InlineConstant] public const string SupplierRegion = "SupplierRegion";
+            [InlineConstant] public const string SupplierPostalCode = "SupplierPostalCode";
+            [InlineConstant] public const string SupplierCountry = "SupplierCountry";
+            [InlineConstant] public const string SupplierPhone = "SupplierPhone";
+            [InlineConstant] public const string SupplierFax = "SupplierFax";
+            [InlineConstant] public const string SupplierHomePage = "SupplierHomePage";
+            [InlineConstant] public const string CategoryName = "CategoryName";
+            [InlineConstant] public const string CategoryDescription = "CategoryDescription";
+            [InlineConstant] public const string CategoryPicture = "CategoryPicture";
         }
     }
-
+    
 }
 

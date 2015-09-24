@@ -15,6 +15,6 @@ namespace MovieTutorial.Administration
         public Int32? UserID { get; set; }
         public List<Int32> Roles { get; set; }
     }
-
+    
 }
 

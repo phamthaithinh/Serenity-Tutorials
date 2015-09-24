@@ -12,13 +12,10 @@ namespace MovieTutorial.Northwind
     [Imported, Serializable, PreserveMemberCase]
     public partial class EmployeeTerritoryRow
     {
-        [InlineConstant]
-        public const string IdProperty = "EmployeeID";
-        [InlineConstant]
-        public const string NameProperty = "TerritoryID";
-        [InlineConstant]
-        public const string LocalTextPrefix = "Northwind.EmployeeTerritory";
-
+        [InlineConstant] public const string IdProperty = "EmployeeID";
+        [InlineConstant] public const string NameProperty = "TerritoryID";
+        [InlineConstant] public const string LocalTextPrefix = "Northwind.EmployeeTerritory";
+    
         public Int32? EmployeeID { get; set; }
         public String TerritoryID { get; set; }
         public String EmployeeLastName { get; set; }
@@ -40,54 +37,33 @@ namespace MovieTutorial.Northwind
         public String EmployeePhotoPath { get; set; }
         public String TerritoryTerritoryDescription { get; set; }
         public Int32? TerritoryRegionID { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant]
-            public const string EmployeeID = "EmployeeID";
-            [InlineConstant]
-            public const string TerritoryID = "TerritoryID";
-            [InlineConstant]
-            public const string EmployeeLastName = "EmployeeLastName";
-            [InlineConstant]
-            public const string EmployeeFirstName = "EmployeeFirstName";
-            [InlineConstant]
-            public const string EmployeeTitle = "EmployeeTitle";
-            [InlineConstant]
-            public const string EmployeeTitleOfCourtesy = "EmployeeTitleOfCourtesy";
-            [InlineConstant]
-            public const string EmployeeBirthDate = "EmployeeBirthDate";
-            [InlineConstant]
-            public const string EmployeeHireDate = "EmployeeHireDate";
-            [InlineConstant]
-            public const string EmployeeAddress = "EmployeeAddress";
-            [InlineConstant]
-            public const string EmployeeCity = "EmployeeCity";
-            [InlineConstant]
-            public const string EmployeeRegion = "EmployeeRegion";
-            [InlineConstant]
-            public const string EmployeePostalCode = "EmployeePostalCode";
-            [InlineConstant]
-            public const string EmployeeCountry = "EmployeeCountry";
-            [InlineConstant]
-            public const string EmployeeHomePhone = "EmployeeHomePhone";
-            [InlineConstant]
-            public const string EmployeeExtension = "EmployeeExtension";
-            [InlineConstant]
-            public const string EmployeePhoto = "EmployeePhoto";
-            [InlineConstant]
-            public const string EmployeeNotes = "EmployeeNotes";
-            [InlineConstant]
-            public const string EmployeeReportsTo = "EmployeeReportsTo";
-            [InlineConstant]
-            public const string EmployeePhotoPath = "EmployeePhotoPath";
-            [InlineConstant]
-            public const string TerritoryTerritoryDescription = "TerritoryTerritoryDescription";
-            [InlineConstant]
-            public const string TerritoryRegionID = "TerritoryRegionID";
+            [InlineConstant] public const string EmployeeID = "EmployeeID";
+            [InlineConstant] public const string TerritoryID = "TerritoryID";
+            [InlineConstant] public const string EmployeeLastName = "EmployeeLastName";
+            [InlineConstant] public const string EmployeeFirstName = "EmployeeFirstName";
+            [InlineConstant] public const string EmployeeTitle = "EmployeeTitle";
+            [InlineConstant] public const string EmployeeTitleOfCourtesy = "EmployeeTitleOfCourtesy";
+            [InlineConstant] public const string EmployeeBirthDate = "EmployeeBirthDate";
+            [InlineConstant] public const string EmployeeHireDate = "EmployeeHireDate";
+            [InlineConstant] public const string EmployeeAddress = "EmployeeAddress";
+            [InlineConstant] public const string EmployeeCity = "EmployeeCity";
+            [InlineConstant] public const string EmployeeRegion = "EmployeeRegion";
+            [InlineConstant] public const string EmployeePostalCode = "EmployeePostalCode";
+            [InlineConstant] public const string EmployeeCountry = "EmployeeCountry";
+            [InlineConstant] public const string EmployeeHomePhone = "EmployeeHomePhone";
+            [InlineConstant] public const string EmployeeExtension = "EmployeeExtension";
+            [InlineConstant] public const string EmployeePhoto = "EmployeePhoto";
+            [InlineConstant] public const string EmployeeNotes = "EmployeeNotes";
+            [InlineConstant] public const string EmployeeReportsTo = "EmployeeReportsTo";
+            [InlineConstant] public const string EmployeePhotoPath = "EmployeePhotoPath";
+            [InlineConstant] public const string TerritoryTerritoryDescription = "TerritoryTerritoryDescription";
+            [InlineConstant] public const string TerritoryRegionID = "TerritoryRegionID";
         }
     }
-
+    
 }
 

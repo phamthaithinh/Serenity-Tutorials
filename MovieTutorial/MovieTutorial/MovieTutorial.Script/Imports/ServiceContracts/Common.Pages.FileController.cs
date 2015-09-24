@@ -1,5 +1,5 @@
 
-namespace MovieTutorial.Administration
+namespace MovieTutorial.Common.Pages
 {
     using Serenity;
     using Serenity.ComponentModel;
@@ -9,10 +9,5 @@ namespace MovieTutorial.Administration
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    [Imported, Serializable, PreserveMemberCase]
-    public partial class UserRoleListResponse : ListResponse<Int32>
-    {
-    }
-    
 }
 

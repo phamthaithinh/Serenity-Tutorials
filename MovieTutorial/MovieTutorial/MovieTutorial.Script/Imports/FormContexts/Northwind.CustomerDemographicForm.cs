@@ -8,15 +8,13 @@ namespace MovieTutorial.Northwind
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    using MovieTutorial.Northwind;
 
     public partial class CustomerDemographicForm : PrefixedContext
     {
-        [InlineConstant]
-        public const string FormKey = "Northwind.CustomerDemographic";
-
-        public CustomerDemographicForm(string idPrefix) : base(idPrefix) { }
-
+        [InlineConstant] public const string FormKey = "Northwind.CustomerDemographic";
+    
+        public CustomerDemographicForm(string idPrefix) : base(idPrefix) {}
+    
         public StringEditor CustomerTypeID { get { return ById<StringEditor>("CustomerTypeID"); } }
         public StringEditor CustomerDesc { get { return ById<StringEditor>("CustomerDesc"); } }
     }

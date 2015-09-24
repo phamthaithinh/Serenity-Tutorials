@@ -12,17 +12,13 @@ namespace MovieTutorial.Northwind
     [Imported, Serializable, PreserveMemberCase]
     public partial class CustomerRow
     {
-        [InlineConstant]
-        public const string IdProperty = "ID";
-        [InlineConstant]
-        public const string NameProperty = "CustomerID";
-        [InlineConstant]
-        public const string LocalTextPrefix = "Northwind.Customer";
-        [InlineConstant]
-        public const string LookupKey = "Northwind.Customer";
-
-        public static Lookup<CustomerRow> Lookup {[InlineCode("Q.getLookup('Northwind.Customer')")] get { return null; } }
-
+        [InlineConstant] public const string IdProperty = "ID";
+        [InlineConstant] public const string NameProperty = "CustomerID";
+        [InlineConstant] public const string LocalTextPrefix = "Northwind.Customer";
+        [InlineConstant] public const string LookupKey = "Northwind.Customer";
+    
+        public static Lookup<CustomerRow> Lookup { [InlineCode("Q.getLookup('Northwind.Customer')")] get { return null; } }
+    
         public Int32? ID { get; set; }
         public String CustomerID { get; set; }
         public String CompanyName { get; set; }
@@ -35,36 +31,24 @@ namespace MovieTutorial.Northwind
         public String Country { get; set; }
         public String Phone { get; set; }
         public String Fax { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant]
-            public const string ID = "ID";
-            [InlineConstant]
-            public const string CustomerID = "CustomerID";
-            [InlineConstant]
-            public const string CompanyName = "CompanyName";
-            [InlineConstant]
-            public const string ContactName = "ContactName";
-            [InlineConstant]
-            public const string ContactTitle = "ContactTitle";
-            [InlineConstant]
-            public const string Address = "Address";
-            [InlineConstant]
-            public const string City = "City";
-            [InlineConstant]
-            public const string Region = "Region";
-            [InlineConstant]
-            public const string PostalCode = "PostalCode";
-            [InlineConstant]
-            public const string Country = "Country";
-            [InlineConstant]
-            public const string Phone = "Phone";
-            [InlineConstant]
-            public const string Fax = "Fax";
+            [InlineConstant] public const string ID = "ID";
+            [InlineConstant] public const string CustomerID = "CustomerID";
+            [InlineConstant] public const string CompanyName = "CompanyName";
+            [InlineConstant] public const string ContactName = "ContactName";
+            [InlineConstant] public const string ContactTitle = "ContactTitle";
+            [InlineConstant] public const string Address = "Address";
+            [InlineConstant] public const string City = "City";
+            [InlineConstant] public const string Region = "Region";
+            [InlineConstant] public const string PostalCode = "PostalCode";
+            [InlineConstant] public const string Country = "Country";
+            [InlineConstant] public const string Phone = "Phone";
+            [InlineConstant] public const string Fax = "Fax";
         }
     }
-
+    
 }
 

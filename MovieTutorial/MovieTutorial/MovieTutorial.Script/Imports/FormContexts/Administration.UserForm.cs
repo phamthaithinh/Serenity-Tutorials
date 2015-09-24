@@ -8,15 +8,13 @@ namespace MovieTutorial.Administration
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    using MovieTutorial.Northwind;
 
     public partial class UserForm : PrefixedContext
     {
-        [InlineConstant]
-        public const string FormKey = "Administration.User";
-
-        public UserForm(string idPrefix) : base(idPrefix) { }
-
+        [InlineConstant] public const string FormKey = "Administration.User";
+    
+        public UserForm(string idPrefix) : base(idPrefix) {}
+    
         public StringEditor Username { get { return ById<StringEditor>("Username"); } }
         public StringEditor DisplayName { get { return ById<StringEditor>("DisplayName"); } }
         public EmailEditor Email { get { return ById<EmailEditor>("Email"); } }

@@ -27,10 +27,4 @@ namespace MovieTutorial.MovieDB
             };
         }
     }
-
-    // Please remove this partial class or the first line below, after you run ScriptContexts.tt
-    [Imported, Serializable, PreserveMemberCase] 
-    public partial class MovieRow
-    {
-    }
 }

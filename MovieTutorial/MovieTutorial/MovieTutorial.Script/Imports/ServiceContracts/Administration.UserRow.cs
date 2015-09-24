@@ -12,15 +12,11 @@ namespace MovieTutorial.Administration
     [Imported, Serializable, PreserveMemberCase]
     public partial class UserRow
     {
-        [InlineConstant]
-        public const string IdProperty = "UserId";
-        [InlineConstant]
-        public const string IsActiveProperty = "IsActive";
-        [InlineConstant]
-        public const string NameProperty = "Username";
-        [InlineConstant]
-        public const string LocalTextPrefix = "Administration.User";
-
+        [InlineConstant] public const string IdProperty = "UserId";
+        [InlineConstant] public const string IsActiveProperty = "IsActive";
+        [InlineConstant] public const string NameProperty = "Username";
+        [InlineConstant] public const string LocalTextPrefix = "Administration.User";
+    
         public Int32? UserId { get; set; }
         public String Username { get; set; }
         public String Source { get; set; }
@@ -35,40 +31,26 @@ namespace MovieTutorial.Administration
         public Int32? UpdateUserId { get; set; }
         public String UpdateDate { get; set; }
         public Int16? IsActive { get; set; }
-
+    
         [Imported, PreserveMemberCase]
         public static class Fields
         {
-            [InlineConstant]
-            public const string UserId = "UserId";
-            [InlineConstant]
-            public const string Username = "Username";
-            [InlineConstant]
-            public const string Source = "Source";
-            [InlineConstant]
-            public const string PasswordHash = "PasswordHash";
-            [InlineConstant]
-            public const string PasswordSalt = "PasswordSalt";
-            [InlineConstant]
-            public const string DisplayName = "DisplayName";
-            [InlineConstant]
-            public const string Email = "Email";
-            [InlineConstant]
-            public const string Password = "Password";
-            [InlineConstant]
-            public const string PasswordConfirm = "PasswordConfirm";
-            [InlineConstant]
-            public const string InsertUserId = "InsertUserId";
-            [InlineConstant]
-            public const string InsertDate = "InsertDate";
-            [InlineConstant]
-            public const string UpdateUserId = "UpdateUserId";
-            [InlineConstant]
-            public const string UpdateDate = "UpdateDate";
-            [InlineConstant]
-            public const string IsActive = "IsActive";
+            [InlineConstant] public const string UserId = "UserId";
+            [InlineConstant] public const string Username = "Username";
+            [InlineConstant] public const string Source = "Source";
+            [InlineConstant] public const string PasswordHash = "PasswordHash";
+            [InlineConstant] public const string PasswordSalt = "PasswordSalt";
+            [InlineConstant] public const string DisplayName = "DisplayName";
+            [InlineConstant] public const string Email = "Email";
+            [InlineConstant] public const string Password = "Password";
+            [InlineConstant] public const string PasswordConfirm = "PasswordConfirm";
+            [InlineConstant] public const string InsertUserId = "InsertUserId";
+            [InlineConstant] public const string InsertDate = "InsertDate";
+            [InlineConstant] public const string UpdateUserId = "UpdateUserId";
+            [InlineConstant] public const string UpdateDate = "UpdateDate";
+            [InlineConstant] public const string IsActive = "IsActive";
         }
     }
-
+    
 }
 

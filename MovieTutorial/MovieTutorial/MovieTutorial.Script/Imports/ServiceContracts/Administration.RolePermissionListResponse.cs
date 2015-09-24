@@ -13,6 +13,6 @@ namespace MovieTutorial.Administration
     public partial class RolePermissionListResponse : ListResponse<String>
     {
     }
-
+    
 }
 

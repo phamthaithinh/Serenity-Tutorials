@@ -8,15 +8,13 @@ namespace MovieTutorial.Administration
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    using MovieTutorial.Northwind;
 
     public partial class RoleForm : PrefixedContext
     {
-        [InlineConstant]
-        public const string FormKey = "Administration.Role";
-
-        public RoleForm(string idPrefix) : base(idPrefix) { }
-
+        [InlineConstant] public const string FormKey = "Administration.Role";
+    
+        public RoleForm(string idPrefix) : base(idPrefix) {}
+    
         public StringEditor RoleName { get { return ById<StringEditor>("RoleName"); } }
     }
 }
