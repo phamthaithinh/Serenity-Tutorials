@@ -12,3 +12,5 @@ obj/
 **/*.Test/bin
 MovieTutorial/MovieTutorial/MovieTutorial.Web/Modules/Common/Imports/ScriptEditorTypes.log
 MovieTutorial/MovieTutorial/MovieTutorial.Web/Modules/Common/Imports/ScriptFormatterTypes.log
+MovieTutorial/MovieTutorial/MovieTutorial.Script/Imports/ServiceContracts/ServiceContracts.log
+MovieTutorial/MovieTutorial/MovieTutorial.Script/Imports/FormContexts/FormContexts.log
