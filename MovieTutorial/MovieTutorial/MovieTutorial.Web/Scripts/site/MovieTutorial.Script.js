@@ -1652,6 +1652,9 @@
 		},
 		get_runtime: function() {
 			return this.byId(Serenity.IntegerEditor).call(this, 'Runtime');
+		},
+		get_kind: function() {
+			return this.byId(Serenity.EnumEditor).call(this, 'Kind');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_MovieGrid, $asm, {

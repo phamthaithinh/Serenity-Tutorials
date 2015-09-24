@@ -23,6 +23,7 @@ namespace MovieTutorial.MovieDB
         public Int32? Year { get; set; }
         public String ReleaseDate { get; set; }
         public Int32? Runtime { get; set; }
+        public Int32? Kind { get; set; }
     
         [Imported, PreserveMemberCase]
         public static class Fields
@@ -34,6 +35,7 @@ namespace MovieTutorial.MovieDB
             [InlineConstant] public const string Year = "Year";
             [InlineConstant] public const string ReleaseDate = "ReleaseDate";
             [InlineConstant] public const string Runtime = "Runtime";
+            [InlineConstant] public const string Kind = "Kind";
         }
     }
     

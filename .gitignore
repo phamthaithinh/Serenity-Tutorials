@@ -10,3 +10,5 @@ obj/
 **/*.Web/bin
 **/*.Script/bin
 **/*.Test/bin
+MovieTutorial/MovieTutorial/MovieTutorial.Web/Modules/Common/Imports/ScriptEditorTypes.log
+MovieTutorial/MovieTutorial/MovieTutorial.Web/Modules/Common/Imports/ScriptFormatterTypes.log
