@@ -177,6 +177,9 @@
     <Compile Include="Imports\ServiceContracts\Membership.LoginRequest.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ServiceContracts\MovieDB.MovieKind.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ServiceContracts\MovieDB.MovieRow.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>

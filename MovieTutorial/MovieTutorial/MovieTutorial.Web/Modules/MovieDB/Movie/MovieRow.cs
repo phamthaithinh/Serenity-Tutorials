@@ -65,11 +65,11 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.Runtime[this] = value; }
         }
 
-        [DisplayName("Kind")]
-        public Int32? Kind
+        [DisplayName("Kind"), NotNull]
+        public MovieKind? Kind
         {
-            get { return Fields.Kind[this]; }
-            set { Fields.Kind[this] = value; }
+            get { return (MovieKind?)Fields.Kind[this]; }
+            set { Fields.Kind[this] = (Int32?)value; }
         }
 
         IIdField IIdRow.IdField
