@@ -457,6 +457,20 @@
 	$MovieTutorial_Membership_LoginPanel.__typeName = 'MovieTutorial.Membership.LoginPanel';
 	global.MovieTutorial.Membership.LoginPanel = $MovieTutorial_Membership_LoginPanel;
 	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.GenreDialog
+	var $MovieTutorial_MovieDB_GenreDialog = function() {
+		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
+	};
+	$MovieTutorial_MovieDB_GenreDialog.__typeName = 'MovieTutorial.MovieDB.GenreDialog';
+	global.MovieTutorial.MovieDB.GenreDialog = $MovieTutorial_MovieDB_GenreDialog;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.GenreGrid
+	var $MovieTutorial_MovieDB_GenreGrid = function(container) {
+		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
+	};
+	$MovieTutorial_MovieDB_GenreGrid.__typeName = 'MovieTutorial.MovieDB.GenreGrid';
+	global.MovieTutorial.MovieDB.GenreGrid = $MovieTutorial_MovieDB_GenreGrid;
+	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieDialog
 	var $MovieTutorial_MovieDB_MovieDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1639,6 +1653,8 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Membership_LoginPanel, $asm, {}, ss.makeGenericType(Serenity.PropertyDialog$1, [Object]), [Serenity.IDialog]);
+	ss.initClass($MovieTutorial_MovieDB_GenreDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
+	ss.initClass($MovieTutorial_MovieDB_GenreGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieForm, $asm, {
 		get_title: function() {
@@ -2188,6 +2204,8 @@
 	ss.setMetadata($MovieTutorial_Administration_UserDialog, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Administration.User'), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($MovieTutorial_Administration_UserGrid, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($MovieTutorial_Administration_UserDialog), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($MovieTutorial_Membership_LoginPanel, { attr: [new Serenity.PanelAttribute(), new Serenity.FormKeyAttribute('Membership.Login')] });
+	ss.setMetadata($MovieTutorial_MovieDB_GenreDialog, { attr: [new Serenity.IdPropertyAttribute('GenreId'), new Serenity.NamePropertyAttribute('Name'), new Serenity.FormKeyAttribute('MovieDB.Genre'), new Serenity.LocalTextPrefixAttribute('MovieDB.Genre'), new Serenity.ServiceAttribute('MovieDB/Genre')] });
+	ss.setMetadata($MovieTutorial_MovieDB_GenreGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Genre'), new Serenity.IdPropertyAttribute('GenreId'), new Serenity.NamePropertyAttribute('Name'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_GenreDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Genre'), new Serenity.ServiceAttribute('MovieDB/Genre')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieDialog, { attr: [new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.FormKeyAttribute('MovieDB.Movie'), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Movie'), new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_MovieDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieKind, { attr: [new Serenity.EnumKeyAttribute('MovieDB.MovieKind')] });

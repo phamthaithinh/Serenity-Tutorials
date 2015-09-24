@@ -304,6 +304,8 @@
     <Compile Include="Administration\UserPermission\UserPermissionDialog.cs" />
     <Compile Include="MovieDB\Movie\MovieGrid.cs" />
     <Compile Include="MovieDB\Movie\MovieDialog.cs" />
+    <Compile Include="MovieDB\Genre\GenreGrid.cs" />
+    <Compile Include="MovieDB\Genre\GenreDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Imports\FormContexts\FormContexts.log">

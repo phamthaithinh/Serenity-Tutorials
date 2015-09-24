@@ -1084,3 +1084,44 @@ a,
 .s-MovieDialog .s-PropertyGrid .categories {
   height: 400px;
 }
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+.s-GenreDialog > .size {
+  min-width: 650px;
+  width: 650px;
+}
+.s-GenreDialog .tab-pane {
+  height: auto;
+}
+.s-GenreDialog .caption {
+  width: 150px;
+}
+.s-GenreDialog .editor {
+  width: 400px;
+}
+.s-GenreDialog input.editor[type=checkbox] {
+  width: auto;
+}
+.s-GenreDialog .s-Form .editor.dateQ {
+  width: 383px;
+}
+.s-GenreDialog .s-Form .editor.emailuser {
+  width: 170px;
+}
+.s-GenreDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 323px;
+}
+.s-GenreDialog .s-Form .editor.s-DateTimeEditor.time {
+  width: 56px;
+  margin-left: 4px;
+}
+.s-GenreDialog .s-Form .editor.has-inplace-button {
+  width: 378px;
+}
+.s-GenreDialog .s-Form .emaildomain {
+  width: 215px;
+}
+.s-GenreDialog .s-PropertyGrid .categories {
+  height: 260px;
+}

@@ -790,6 +790,7 @@
     <Content Include="Modules\Administration\Translation\TranslationIndex.cshtml" />
     <Content Include="Modules\Administration\Role\RoleIndex.cshtml" />
     <Content Include="Modules\MovieDB\Movie\MovieIndex.cshtml" />
+    <Content Include="Modules\MovieDB\Genre\GenreIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -960,6 +961,12 @@
     <Compile Include="Modules\MovieDB\Movie\MovieRepository.cs" />
     <Compile Include="Modules\MovieDB\Movie\MovieEndpoint.cs" />
     <Compile Include="Modules\MovieDB\Movie\MoviePage.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenreRow.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenreColumns.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenreForm.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenreRepository.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenreEndpoint.cs" />
+    <Compile Include="Modules\MovieDB\Genre\GenrePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
