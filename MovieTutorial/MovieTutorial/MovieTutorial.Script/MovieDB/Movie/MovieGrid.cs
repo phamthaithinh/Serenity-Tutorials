@@ -21,9 +21,9 @@ namespace MovieTutorial.MovieDB
             return new List<QuickSearchField>
             {
                 new QuickSearchField { Name = "", Title = "all" },
-                new QuickSearchField { Name = "Description", Title = "description" },
-                new QuickSearchField { Name = "Storyline", Title = "storyline" },
-                new QuickSearchField { Name = "Year", Title = "year" }
+                new QuickSearchField { Name = MovieRow.Fields.Description, Title = "description" },
+                new QuickSearchField { Name = MovieRow.Fields.Storyline, Title = "storyline" },
+                new QuickSearchField { Name = MovieRow.Fields.Year, Title = "year" }
             };
         }
     }
