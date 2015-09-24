@@ -72,6 +72,20 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.Kind[this] = (Int32?)value; }
         }
 
+        [DisplayName("Genre"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
+        public Int32? GenreId
+        {
+            get { return Fields.GenreId[this]; }
+            set { Fields.GenreId[this] = value; }
+        }
+
+        [DisplayName("Genre"), Expression("g.Name")]
+        public String GenreName
+        {
+            get { return Fields.GenreName[this]; }
+            set { Fields.GenreName[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.MovieId; }
@@ -99,6 +113,8 @@ namespace MovieTutorial.MovieDB.Entities
             public readonly DateTimeField ReleaseDate;
             public readonly Int32Field Runtime;
             public readonly Int32Field Kind;
+            public readonly Int32Field GenreId;
+            public readonly StringField GenreName;
 
             public RowFields()
                 : base("[mov].Movie")
