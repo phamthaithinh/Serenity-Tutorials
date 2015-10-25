@@ -173,6 +173,63 @@
 	$Serenity_BooleanFiltering.__typeName = 'Serenity.BooleanFiltering';
 	global.Serenity.BooleanFiltering = $Serenity_BooleanFiltering;
 	////////////////////////////////////////////////////////////////////////////////
+	// Serenity.CascadedWidgetLink
+	var $Serenity_CascadedWidgetLink$1 = function(TParent) {
+		var $type = function(widget, parentChange) {
+			this.$widget = null;
+			this.$parentChange = null;
+			this.$parentID = null;
+			this.$widget = widget;
+			this.$parentChange = parentChange;
+			this.bind();
+			this.$widget.get_element().bind('remove.' + widget.get_uniqueName() + 'cwh', ss.mkdel(this, function(e) {
+				this.unbind();
+				this.$widget = null;
+				this.$parentChange = null;
+			}));
+		};
+		ss.registerGenericClassInstance($type, $Serenity_CascadedWidgetLink$1, [TParent], {
+			bind: function() {
+				if (Q.isEmptyOrNull(this.$parentID)) {
+					return;
+				}
+				var parent = $Serenity_WX.tryGetWidget(TParent).call(null, Q.findElementWithRelativeId(this.$widget.get_element(), this.$parentID));
+				if (ss.isValue(parent)) {
+					parent.get_element().bind('change.' + this.$widget.get_uniqueName(), ss.mkdel(this, function() {
+						this.$parentChange(parent);
+					}));
+				}
+			},
+			unbind: function() {
+				if (Q.isEmptyOrNull(this.$parentID)) {
+					return;
+				}
+				var parent = $Serenity_WX.tryGetWidget(TParent).call(null, Q.findElementWithRelativeId(this.$widget.get_element(), this.$parentID));
+				if (ss.isValue(parent)) {
+					parent.get_element().unbind('.' + this.$widget.get_uniqueName());
+				}
+			},
+			get_parentID: function() {
+				return this.$parentID;
+			},
+			set_parentID: function(value) {
+				if (!ss.referenceEquals(this.$parentID, value)) {
+					this.unbind();
+					this.$parentID = value;
+					this.bind();
+				}
+			}
+		}, function() {
+			return null;
+		}, function() {
+			return [];
+		});
+		return $type;
+	};
+	$Serenity_CascadedWidgetLink$1.__typeName = 'Serenity.CascadedWidgetLink$1';
+	ss.initGenericClass($Serenity_CascadedWidgetLink$1, $asm, 1);
+	global.Serenity.CascadedWidgetLink$1 = $Serenity_CascadedWidgetLink$1;
+	////////////////////////////////////////////////////////////////////////////////
 	// Serenity.CheckListEditor
 	var $Serenity_CheckListEditor = function(div, opt) {
 		this.$list = null;
@@ -1161,7 +1218,7 @@
 					for (var i = 0; i < propertyItems.length; i++) {
 						var item = propertyItems[i];
 						var column = columns[i];
-						if (item.editLink) {
+						if (item.editLink === true) {
 							var oldFormat = { $: column.format };
 							var css = { $: (ss.isValue(item.editLinkCssClass) ? item.editLinkCssClass : null) };
 							column.format = this.itemLink((ss.isValue(item.editLinkItemType) ? item.editLinkItemType : null), (ss.isValue(item.editLinkIdField) ? item.editLinkIdField : null), ss.mkdel({ oldFormat: oldFormat }, function(ctx) {
@@ -1289,13 +1346,34 @@
 					this.quickFiltersDiv.append($('<hr/>'));
 				}
 			},
+			determineText: function(text, getKey) {
+				if (ss.isValue(text) && !ss.startsWithString(text, '`')) {
+					var local = Q.tryGetText(text);
+					if (ss.isValue(local)) {
+						return local;
+					}
+				}
+				if (ss.isValue(text) && ss.startsWithString(text, '`')) {
+					text = text.substr(1);
+				}
+				var localTextPrefix = this.getLocalTextPrefix();
+				if (!Q.isEmptyOrNull(localTextPrefix)) {
+					var local1 = Q.tryGetText(getKey(localTextPrefix));
+					if (ss.isValue(local1)) {
+						return local1;
+					}
+				}
+				return text;
+			},
 			addEqualityFilter: function(TWidget) {
 				return function(field, title, options, handler, element, init) {
 					if (ss.isNullOrUndefined(this.quickFiltersDiv)) {
 						$('<div/>').addClass('clear').appendTo(this.toolbar.get_element());
 						this.quickFiltersDiv = $('<div/>').addClass('quick-filters-bar').appendTo(this.toolbar.get_element());
 					}
-					var quickFilter = $("<div class='quick-filter-item'><span class='quick-filter-label'></span></div>").appendTo(this.quickFiltersDiv).children().text(ss.coalesce(title, '')).parent();
+					var quickFilter = $("<div class='quick-filter-item'><span class='quick-filter-label'></span></div>").appendTo(this.quickFiltersDiv).children().text(ss.coalesce(this.determineText(ss.coalesce(title, field), function(pre) {
+						return pre + field;
+					}), '')).parent();
 					var widget = $Serenity_Widget.create(TWidget).call(null, ss.mkdel(this, function(e) {
 						if (!Q.isEmptyOrNull(field)) {
 							e.attr('id', this.get_uniqueName() + '_QuickFilter_' + field);
@@ -2358,7 +2436,7 @@
 				var anyLocalizable = false;
 				for (var $t1 = 0; $t1 < pgOptions.items.length; $t1++) {
 					var item = pgOptions.items[$t1];
-					if (item.localizable) {
+					if (item.localizable === true) {
 						anyLocalizable = true;
 					}
 				}
@@ -2370,7 +2448,7 @@
 				var items = [];
 				for (var $t2 = 0; $t2 < pgOptions.items.length; $t2++) {
 					var item1 = pgOptions.items[$t2];
-					if (item1.localizable) {
+					if (item1.localizable === true) {
 						var copy = $.extend({}, item1);
 						copy.oneWay = true;
 						copy.readOnly = true;
@@ -3466,6 +3544,42 @@
 		}
 	};
 	global.Serenity.FormatterTypeRegistry = $Serenity_FormatterTypeRegistry;
+	////////////////////////////////////////////////////////////////////////////////
+	// Serenity.GoogleMap
+	var $Serenity_GoogleMap = function(container, opt) {
+		this.$map = null;
+		ss.makeGenericType($Serenity_Widget$1, [Object]).call(this, container, opt);
+		var center = new google.maps.LatLng(ss.coalesce(this.options.latitude, 0), ss.coalesce(this.options.longitude, 0));
+		var $t1 = new Object();
+		$t1.center = center;
+		$t1.mapTypeId = ss.coalesce(this.options.mapTypeId, 'roadmap');
+		$t1.zoom = ss.coalesce(this.options.zoom, 15);
+		$t1.zoomControl = true;
+		this.$map = new google.maps.Map(container[0], $t1);
+		if (ss.isValue(this.options.markerTitle)) {
+			var $t2 = new Object();
+			var $t3 = this.options.markerLatitude;
+			if (ss.isNullOrUndefined($t3)) {
+				$t3 = ss.coalesce(this.options.latitude, 0);
+			}
+			var $t4 = this.options.markerLongitude;
+			if (ss.isNullOrUndefined($t4)) {
+				$t4 = ss.coalesce(this.options.longitude, 0);
+			}
+			$t2.position = new google.maps.LatLng($t3, $t4);
+			$t2.map = this.$map;
+			$t2.title = this.options.markerTitle;
+			$t2.animation = 2;
+			new google.maps.Marker($t2);
+		}
+		Serenity.LazyLoadHelper.executeOnceWhenShown(container, ss.mkdel(this, function() {
+			google.maps.event.trigger(this.$map, 'resize', []);
+			this.$map.setCenter(center);
+			// in case it wasn't visible (e.g. in dialog)
+		}));
+	};
+	$Serenity_GoogleMap.__typeName = 'Serenity.GoogleMap';
+	global.Serenity.GoogleMap = $Serenity_GoogleMap;
 	////////////////////////////////////////////////////////////////////////////////
 	// Serenity.GridSelectAllButtonHelper
 	var $Serenity_GridSelectAllButtonHelper = function() {
@@ -4942,7 +5056,7 @@
 		var gridField = $Serenity_WX.getGridField(widget);
 		var hasSupItem = Enumerable.from(gridField.find('sup').get()).any();
 		if (isRequired && !hasSupItem) {
-			$('<sup>*</sup>').attr('title', 'Bu alan zorunludur').prependTo(gridField.find('.caption')[0]);
+			$('<sup>*</sup>').attr('title', Texts$Controls$PropertyGrid.RequiredHint.get()).prependTo(gridField.find('.caption')[0]);
 		}
 		else if (!isRequired && hasSupItem) {
 			$(gridField.find('sup')[0]).remove();
@@ -5228,7 +5342,7 @@
 		}
 		result.name = $t1;
 		result.cssClass = item.cssClass;
-		result.sortOrder = item.sortOrder;
+		result.sortOrder = ss.coalesce(item.sortOrder, 0);
 		if (ss.isValue(item.alignment) && item.alignment.length > 0) {
 			if (!Q.isEmptyOrNull(result.cssClass)) {
 				result.cssClass += ' align-' + item.alignment;
@@ -5238,9 +5352,9 @@
 			}
 		}
 		result.width = (ss.isValue(item.width) ? item.width : 80);
-		result.minWidth = ((!ss.isValue(item.minWidth) || item.minWidth === 0) ? 30 : item.minWidth);
-		result.maxWidth = ((!ss.isValue(item.maxWidth) || item.maxWidth === 0) ? null : item.maxWidth);
-		result.resizable = !ss.isValue(item.resizable) || item.resizable;
+		result.minWidth = ss.coalesce(item.minWidth, 30);
+		result.maxWidth = ((ss.isNullOrUndefined(item.maxWidth) || item.maxWidth === 0) ? null : item.maxWidth);
+		result.resizable = ss.isNullOrUndefined(item.resizable) || ss.unbox(item.resizable);
 		if (ss.isValue(item.formatterType) && item.formatterType.length > 0) {
 			var formatter = ss.cast(ss.createInstance($Serenity_FormatterTypeRegistry.get(item.formatterType)), Serenity.ISlickFormatter);
 			if (ss.isValue(item.formatterParams)) {
@@ -7015,7 +7129,7 @@
 			return list;
 		},
 		isNullable: function() {
-			return !this.get_field().required;
+			return this.get_field().required !== true;
 		},
 		createEditor: function() {
 			switch (this.get_operator().key) {
@@ -7596,7 +7710,7 @@
 		},
 		getEditorOptions: function() {
 			var opt = ss.makeGenericType($Serenity_BaseEditorFiltering$1, [$Serenity_Widget]).prototype.getEditorOptions.call(this);
-			if (this.useEditor() && ss.referenceEquals(this.get_editorType(), this.get_field().editorType)) {
+			if (this.useEditor() && ss.referenceEquals(this.get_editorType(), ss.coalesce(this.get_field().editorType, 'String'))) {
 				opt = $.extend(opt, this.get_field().editorParams);
 			}
 			return opt;
@@ -8329,6 +8443,11 @@
 	}, ss.makeGenericType($Serenity_Widget$1, [Object]));
 	ss.initClass($Serenity_FLX, $asm, {});
 	ss.initClass($Serenity_FormatterTypeRegistry, $asm, {});
+	ss.initClass($Serenity_GoogleMap, $asm, {
+		get_map: function() {
+			return this.$map;
+		}
+	}, ss.makeGenericType($Serenity_Widget$1, [Object]));
 	ss.initClass($Serenity_GridSelectAllButtonHelper, $asm, {});
 	ss.initClass($Serenity_GridUtils, $asm, {});
 	ss.initClass($Serenity_HtmlContentEditor, $asm, {
@@ -8820,10 +8939,10 @@
 				$t1 = ss.coalesce(title, '');
 			}
 			var label = $t2.attr('title', $t1).html(ss.coalesce(title, '')).appendTo(fieldDiv);
-			if (item.required) {
+			if (item.required === true) {
 				$('<sup>*</sup>').attr('title', Texts$Controls$PropertyGrid.RequiredHint.get()).prependTo(label);
 			}
-			var editorType = $Serenity_EditorTypeRegistry.get(item.editorType);
+			var editorType = $Serenity_EditorTypeRegistry.get(ss.coalesce(item.editorType, 'String'));
 			var elementAttr = ss.getAttributes(editorType, Serenity.ElementAttribute, true);
 			var elementHtml = ((elementAttr.length > 0) ? elementAttr[0].get_html() : '<input/>');
 			var element = $Serenity_Widget.elementFor$1(editorType).addClass('editor').addClass('flexify').attr('id', editorId).appendTo(fieldDiv);
@@ -8973,7 +9092,7 @@
 		save: function(target) {
 			for (var i = 0; i < this.$editors.length; i++) {
 				var item = this.$items[i];
-				if (!item.oneWay && !(this.get_mode() === 0 && item.insertable === false) && !(this.get_mode() === 1 && item.updatable === false)) {
+				if (item.oneWay !== true && !(this.get_mode() === 0 && item.insertable === false) && !(this.get_mode() === 1 && item.updatable === false)) {
 					var editor = this.$editors[i];
 					$Serenity_PropertyGrid.saveEditorValue(editor, item, target);
 				}
@@ -8983,9 +9102,9 @@
 			for (var i = 0; i < this.$editors.length; i++) {
 				var item = this.$items[i];
 				var editor = this.$editors[i];
-				var readOnly = item.readOnly || this.get_mode() === 0 && item.insertable === false || this.get_mode() === 1 && item.updatable === false;
+				var readOnly = item.readOnly === true || this.get_mode() === 0 && item.insertable === false || this.get_mode() === 1 && item.updatable === false;
 				$Serenity_PropertyGrid.setReadOnly(editor, readOnly);
-				$Serenity_PropertyGrid.setRequired(editor, !readOnly && item.required && item.editorType !== 'Boolean');
+				$Serenity_PropertyGrid.setRequired(editor, !readOnly && !!item.required && item.editorType !== 'Boolean');
 			}
 		},
 		enumerateItems: function(callback) {
@@ -9429,6 +9548,7 @@
 	ss.setMetadata($Serenity_EmailEditorOptions, { members: [{ attr: [new $System_ComponentModel_DisplayNameAttribute('Etki Alanı')], name: 'Domain', type: 16, returnType: String, getter: { name: 'get_Domain', type: 8, params: [], returnType: String, fget: 'domain' }, setter: { name: 'set_Domain', type: 8, params: [String], returnType: Object, fset: 'domain' }, fname: 'domain' }, { attr: [new $System_ComponentModel_DisplayNameAttribute('Etki Alanı Salt Okunur')], name: 'ReadOnlyDomain', type: 16, returnType: Boolean, getter: { name: 'get_ReadOnlyDomain', type: 8, params: [], returnType: Boolean, fget: 'readOnlyDomain' }, setter: { name: 'set_ReadOnlyDomain', type: 8, params: [Boolean], returnType: Object, fset: 'readOnlyDomain' }, fname: 'readOnlyDomain' }] });
 	ss.setMetadata($Serenity_EnumEditor, { attr: [new Serenity.EditorAttribute(), new $System_ComponentModel_DisplayNameAttribute('Enumeration'), new Serenity.OptionsTypeAttribute($Serenity_EnumEditorOptions), new Serenity.ElementAttribute('<input type="hidden"/>')] });
 	ss.setMetadata($Serenity_EnumEditorOptions, { members: [{ attr: [new $System_ComponentModel_DisplayNameAttribute('Enum Type Key')], name: 'EnumKey', type: 16, returnType: String, getter: { name: 'get_EnumKey', type: 8, params: [], returnType: String, fget: 'enumKey' }, setter: { name: 'set_EnumKey', type: 8, params: [String], returnType: Object, fset: 'enumKey' }, fname: 'enumKey' }] });
+	ss.setMetadata($Serenity_GoogleMap, { attr: [new Serenity.ElementAttribute('<div/>')] });
 	ss.setMetadata($Serenity_HtmlContentEditor, { attr: [new Serenity.EditorAttribute(), new $System_ComponentModel_DisplayNameAttribute('Html İçerik'), new Serenity.OptionsTypeAttribute($Serenity_HtmlContentEditorOptions), new Serenity.ElementAttribute('<textarea />')] });
 	ss.setMetadata($Serenity_HtmlContentEditorOptions, { members: [{ attr: [new $Serenity_ComponentModel_HiddenAttribute()], name: 'Cols', type: 16, returnType: ss.makeGenericType(ss.Nullable$1, [ss.Int32]), getter: { name: 'get_Cols', type: 8, params: [], returnType: ss.makeGenericType(ss.Nullable$1, [ss.Int32]), fget: 'cols' }, setter: { name: 'set_Cols', type: 8, params: [ss.makeGenericType(ss.Nullable$1, [ss.Int32])], returnType: Object, fset: 'cols' }, fname: 'cols' }, { attr: [new $Serenity_ComponentModel_HiddenAttribute()], name: 'Rows', type: 16, returnType: ss.makeGenericType(ss.Nullable$1, [ss.Int32]), getter: { name: 'get_Rows', type: 8, params: [], returnType: ss.makeGenericType(ss.Nullable$1, [ss.Int32]), fget: 'rows' }, setter: { name: 'set_Rows', type: 8, params: [ss.makeGenericType(ss.Nullable$1, [ss.Int32])], returnType: Object, fset: 'rows' }, fname: 'rows' }] });
 	ss.setMetadata($Serenity_HtmlReportContentEditor, { attr: [new Serenity.EditorAttribute(), new $System_ComponentModel_DisplayNameAttribute('Html İçerik (Rapor Uyumlu Kısıtlı Set)'), new Serenity.OptionsTypeAttribute($Serenity_HtmlContentEditorOptions), new Serenity.ElementAttribute('<textarea />')] });
