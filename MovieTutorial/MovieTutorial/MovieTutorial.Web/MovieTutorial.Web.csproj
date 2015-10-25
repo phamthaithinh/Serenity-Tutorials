@@ -792,6 +792,7 @@
     <Content Include="Modules\MovieDB\Movie\MovieIndex.cshtml" />
     <Content Include="Modules\MovieDB\Genre\GenreIndex.cshtml" />
     <Content Include="Modules\MovieDB\Person\PersonIndex.cshtml" />
+    <Content Include="Modules\MovieDB\MovieCast\MovieCastIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -977,6 +978,12 @@
     <Compile Include="Modules\MovieDB\Person\PersonRepository.cs" />
     <Compile Include="Modules\MovieDB\Person\PersonEndpoint.cs" />
     <Compile Include="Modules\MovieDB\Person\PersonPage.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastRow.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastColumns.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastForm.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastRepository.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastEndpoint.cs" />
+    <Compile Include="Modules\MovieDB\MovieCast\MovieCastPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
