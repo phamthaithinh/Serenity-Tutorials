@@ -1,4 +1,5 @@
 ﻿
+
 namespace MovieTutorial.MovieDB.Repositories
 {
     using Serenity;
@@ -6,9 +7,9 @@ namespace MovieTutorial.MovieDB.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.MovieRow;
+    using MyRow = Entities.PersonRow;
 
-    public class MovieRepository
+    public class PersonRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 

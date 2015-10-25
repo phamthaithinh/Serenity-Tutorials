@@ -315,6 +315,8 @@
     <Compile Include="MovieDB\Movie\MovieDialog.cs" />
     <Compile Include="MovieDB\Genre\GenreGrid.cs" />
     <Compile Include="MovieDB\Genre\GenreDialog.cs" />
+    <Compile Include="MovieDB\Person\PersonGrid.cs" />
+    <Compile Include="MovieDB\Person\PersonDialog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Imports\FormContexts\FormContexts.log">

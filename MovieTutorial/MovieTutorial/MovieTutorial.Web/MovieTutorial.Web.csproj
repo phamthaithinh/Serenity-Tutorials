@@ -791,6 +791,7 @@
     <Content Include="Modules\Administration\Role\RoleIndex.cshtml" />
     <Content Include="Modules\MovieDB\Movie\MovieIndex.cshtml" />
     <Content Include="Modules\MovieDB\Genre\GenreIndex.cshtml" />
+    <Content Include="Modules\MovieDB\Person\PersonIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -841,6 +842,7 @@
     <Compile Include="Modules\Common\Navigation\NavigationItems.cs" />
     <Compile Include="Modules\Common\Navigation\NavigationModel.cs" />
     <Compile Include="Modules\MovieDB\Movie\MovieKind.cs" />
+    <Compile Include="Modules\MovieDB\Person\Gender.cs" />
     <Compile Include="Modules\Northwind\Northwind.DynamicScripts.cs" />
     <Compile Include="Modules\Northwind\Category\CategoryColumns.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerColumns.cs" />
@@ -969,6 +971,12 @@
     <Compile Include="Modules\MovieDB\Genre\GenreRepository.cs" />
     <Compile Include="Modules\MovieDB\Genre\GenreEndpoint.cs" />
     <Compile Include="Modules\MovieDB\Genre\GenrePage.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonRow.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonColumns.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonForm.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonRepository.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonEndpoint.cs" />
+    <Compile Include="Modules\MovieDB\Person\PersonPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
