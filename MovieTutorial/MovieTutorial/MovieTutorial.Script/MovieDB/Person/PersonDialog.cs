@@ -5,8 +5,8 @@ namespace MovieTutorial.MovieDB
     using Serenity;
     using System.Collections.Generic;
 
-    [IdProperty("PersonId"), NameProperty("Firstname")]
-    [FormKey("MovieDB.Person"), LocalTextPrefix("MovieDB.Person"), Service("MovieDB/Person")]
+    [IdProperty(PersonRow.IdProperty), NameProperty(PersonRow.Fields.Fullname)]
+    [FormKey(PersonForm.FormKey), LocalTextPrefix(PersonRow.LocalTextPrefix), Service(PersonService.BaseUrl)]
     public class PersonDialog : EntityDialog<PersonRow>
     {
     }
