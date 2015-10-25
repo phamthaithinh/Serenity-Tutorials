@@ -51,6 +51,9 @@
     <Compile Include="Imports\FormContexts\Membership.LoginForm.cs">
       <DependentUpon>FormContexts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\FormContexts\MovieDB.GenreForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\FormContexts\MovieDB.MovieForm.cs">
       <DependentUpon>FormContexts.tt</DependentUpon>
     </Compile>
@@ -175,6 +178,12 @@
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ServiceContracts\Membership.LoginRequest.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ServiceContracts\MovieDB.GenreRow.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ServiceContracts\MovieDB.GenreService.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ServiceContracts\MovieDB.MovieKind.cs">

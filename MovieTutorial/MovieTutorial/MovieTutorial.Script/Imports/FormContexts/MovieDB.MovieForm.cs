@@ -21,6 +21,7 @@ namespace MovieTutorial.MovieDB
         public IntegerEditor Year { get { return ById<IntegerEditor>("Year"); } }
         public DateEditor ReleaseDate { get { return ById<DateEditor>("ReleaseDate"); } }
         public IntegerEditor Runtime { get { return ById<IntegerEditor>("Runtime"); } }
+        public LookupEditor GenreId { get { return ById<LookupEditor>("GenreId"); } }
         public EnumEditor Kind { get { return ById<EnumEditor>("Kind"); } }
     }
 }

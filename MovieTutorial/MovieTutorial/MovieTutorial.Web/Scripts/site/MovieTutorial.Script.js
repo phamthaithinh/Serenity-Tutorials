@@ -464,12 +464,40 @@
 	$MovieTutorial_MovieDB_GenreDialog.__typeName = 'MovieTutorial.MovieDB.GenreDialog';
 	global.MovieTutorial.MovieDB.GenreDialog = $MovieTutorial_MovieDB_GenreDialog;
 	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.GenreForm
+	var $MovieTutorial_MovieDB_GenreForm = function(idPrefix) {
+		Serenity.PrefixedContext.call(this, idPrefix);
+	};
+	$MovieTutorial_MovieDB_GenreForm.__typeName = 'MovieTutorial.MovieDB.GenreForm';
+	global.MovieTutorial.MovieDB.GenreForm = $MovieTutorial_MovieDB_GenreForm;
+	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.GenreGrid
 	var $MovieTutorial_MovieDB_GenreGrid = function(container) {
 		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
 	};
 	$MovieTutorial_MovieDB_GenreGrid.__typeName = 'MovieTutorial.MovieDB.GenreGrid';
 	global.MovieTutorial.MovieDB.GenreGrid = $MovieTutorial_MovieDB_GenreGrid;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.GenreService
+	var $MovieTutorial_MovieDB_GenreService = function() {
+	};
+	$MovieTutorial_MovieDB_GenreService.__typeName = 'MovieTutorial.MovieDB.GenreService';
+	$MovieTutorial_MovieDB_GenreService.create = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/Genre/Create', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_GenreService.update = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/Genre/Update', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_GenreService.delete$1 = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/Genre/Delete', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_GenreService.retrieve = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/Genre/Retrieve', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_GenreService.list = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/Genre/List', request, onSuccess, options);
+	};
+	global.MovieTutorial.MovieDB.GenreService = $MovieTutorial_MovieDB_GenreService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieDialog
 	var $MovieTutorial_MovieDB_MovieDialog = function() {
@@ -1654,7 +1682,13 @@
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Membership_LoginPanel, $asm, {}, ss.makeGenericType(Serenity.PropertyDialog$1, [Object]), [Serenity.IDialog]);
 	ss.initClass($MovieTutorial_MovieDB_GenreDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
+	ss.initClass($MovieTutorial_MovieDB_GenreForm, $asm, {
+		get_name: function() {
+			return this.byId(Serenity.StringEditor).call(this, 'Name');
+		}
+	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_GenreGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
+	ss.initClass($MovieTutorial_MovieDB_GenreService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieForm, $asm, {
 		get_title: function() {
@@ -1674,6 +1708,9 @@
 		},
 		get_runtime: function() {
 			return this.byId(Serenity.IntegerEditor).call(this, 'Runtime');
+		},
+		get_genreId: function() {
+			return this.byId(Serenity.LookupEditor).call(this, 'GenreId');
 		},
 		get_kind: function() {
 			return this.byId(Serenity.EnumEditor).call(this, 'Kind');
