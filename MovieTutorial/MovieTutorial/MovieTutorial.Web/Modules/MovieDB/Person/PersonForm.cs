@@ -17,7 +17,7 @@ namespace MovieTutorial.MovieDB.Forms
         public String Lastname { get; set; }
         public DateTime BirthDate { get; set; }
         public String BirthPlace { get; set; }
-        public Int32 Gender { get; set; }
+        public Gender Gender { get; set; }
         public Int32 Height { get; set; }
     }
 }

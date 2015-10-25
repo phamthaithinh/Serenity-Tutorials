@@ -23,18 +23,25 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.PersonId[this] = value; }
         }
 
-        [DisplayName("Firstname"), Size(50), NotNull, QuickSearch]
+        [DisplayName("First Name"), Size(50), NotNull]
         public String Firstname
         {
             get { return Fields.Firstname[this]; }
             set { Fields.Firstname[this] = value; }
         }
 
-        [DisplayName("Lastname"), Size(50), NotNull]
+        [DisplayName("Last Name"), Size(50), NotNull]
         public String Lastname
         {
             get { return Fields.Lastname[this]; }
             set { Fields.Lastname[this] = value; }
+        }
+
+        [DisplayName("Full Name"), Expression("(t0.Firstname + ' ' + t0.Lastname)"), QuickSearch]
+        public String Fullname
+        {
+            get { return Fields.Fullname[this]; }
+            set { Fields.Fullname[this] = value; }
         }
 
         [DisplayName("Birth Date")]
@@ -52,10 +59,10 @@ namespace MovieTutorial.MovieDB.Entities
         }
 
         [DisplayName("Gender")]
-        public Int32? Gender
+        public Gender? Gender
         {
-            get { return Fields.Gender[this]; }
-            set { Fields.Gender[this] = value; }
+            get { return (Gender?)Fields.Gender[this]; }
+            set { Fields.Gender[this] = (Int32?)value; }
         }
 
         [DisplayName("Height")]
@@ -72,7 +79,7 @@ namespace MovieTutorial.MovieDB.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Firstname; }
+            get { return Fields.Fullname; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -87,6 +94,7 @@ namespace MovieTutorial.MovieDB.Entities
             public readonly Int32Field PersonId;
             public readonly StringField Firstname;
             public readonly StringField Lastname;
+            public readonly StringField Fullname;
             public readonly DateTimeField BirthDate;
             public readonly StringField BirthPlace;
             public readonly Int32Field Gender;
