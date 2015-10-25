@@ -14,6 +14,7 @@ namespace MovieTutorial.MovieDB.Entities
     [ReadPermission("Administration")]
     [ModifyPermission("Administration")]
     [JsonConverter(typeof(JsonRowConverter))]
+    [LookupScript("MovieDB.Person")]
     public sealed class PersonRow : Row, IIdRow, INameRow
     {
         [DisplayName("Person Id"), Identity]
