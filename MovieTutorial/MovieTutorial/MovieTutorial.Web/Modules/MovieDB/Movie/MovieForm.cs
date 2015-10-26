@@ -16,6 +16,8 @@ namespace MovieTutorial.MovieDB.Forms
         public String Title { get; set; }
         [TextAreaEditor(Rows = 3)]
         public String Description { get; set; }
+        [MovieCastEditor]
+        public List<Entities.MovieCastRow> CastList { get; set; }
         [TextAreaEditor(Rows = 8)]
         public String Storyline { get; set; }
         public Int32 Year { get; set; }
