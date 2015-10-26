@@ -387,6 +387,175 @@
 	ss.initGenericClass($MovieTutorial_Common_CascadedEditorHelper$2, $asm, 2);
 	global.MovieTutorial.Common.CascadedEditorHelper$2 = $MovieTutorial_Common_CascadedEditorHelper$2;
 	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.Common.GridEditorBase
+	var $MovieTutorial_Common_GridEditorBase$1 = function(TEntity) {
+		var $type = function(container) {
+			this.$nextId = 1;
+			ss.makeGenericType(Serenity.EntityGrid$1, [TEntity]).call(this, container);
+		};
+		ss.registerGenericClassInstance($type, $MovieTutorial_Common_GridEditorBase$1, [TEntity], {
+			id: function(entity) {
+				return ss.cast(entity.__id, ss.Int32);
+			},
+			save: function(opt, callback) {
+				var request = opt.request;
+				var row = Q$Externals.deepClone(request.Entity);
+				var id = ss.cast(row.__id, ss.Int32);
+				if (ss.isNullOrUndefined(id)) {
+					row.__id = this.$nextId++;
+				}
+				if (!this.validateEntity(row, id)) {
+					return;
+				}
+				var items = ss.arrayClone(this.view.getItems());
+				if (ss.isNullOrUndefined(id)) {
+					items.push(row);
+				}
+				else {
+					var index = Enumerable.from(items).indexOf(ss.mkdel(this, function(x) {
+						return this.id(x) === ss.unbox(id);
+					}));
+					items[index] = row;
+				}
+				this.setEntities(items);
+				callback({});
+			},
+			deleteEntity: function(id) {
+				this.view.deleteItem(id);
+				return true;
+			},
+			validateEntity: function(row, id) {
+				return true;
+			},
+			setEntities: function(items) {
+				this.view.setItems(items, true);
+			},
+			getNewEntity: function() {
+				return ss.createInstance(TEntity);
+			},
+			getButtons: function() {
+				var $t1 = [];
+				$t1.push({ title: this.getAddButtonCaption(), cssClass: 'add-button', onClick: ss.mkdel(this, function() {
+					this.createEntityDialog(this.getItemType(), ss.mkdel(this, function(dlg) {
+						var dialog = ss.cast(dlg, ss.makeGenericType($MovieTutorial_Common_GridEditorDialog$1, [TEntity]));
+						dialog.set_onSave(ss.mkdel(this, this.save));
+						dialog.loadEntityAndOpenDialog(this.getNewEntity());
+					}));
+				}) });
+				return $t1;
+			},
+			editItem: function(entityOrId) {
+				var id = ss.unbox(Serenity.IdExtensions.toInt32(entityOrId));
+				var item = this.view.getItemById(id);
+				this.createEntityDialog(this.getItemType(), ss.mkdel(this, function(dlg) {
+					var dialog = ss.cast(dlg, ss.makeGenericType($MovieTutorial_Common_GridEditorDialog$1, [TEntity]));
+					dialog.set_onDelete(ss.mkdel(this, function(opt, callback) {
+						if (!this.deleteEntity(id)) {
+							return;
+						}
+						callback({});
+					}));
+					dialog.set_onSave(ss.mkdel(this, this.save));
+					dialog.loadEntityAndOpenDialog(item);
+				}));
+			},
+			getEditValue: function(property, target) {
+				target[property.name] = this.get_value();
+			},
+			setEditValue: function(source, property) {
+				this.set_value(ss.cast(source[property.name], Array));
+			},
+			get_value: function() {
+				return Enumerable.from(this.view.getItems()).select(function(x) {
+					var y = Q$Externals.deepClone(x);
+					delete y['__id'];
+					return y;
+				}).toArray();
+			},
+			set_value: function(value) {
+				this.view.setItems(Enumerable.from(value || []).select(ss.mkdel(this, function(x) {
+					var y = Q$Externals.deepClone(x);
+					y.__id = this.$nextId++;
+					return y;
+				})).toArray(), true);
+			},
+			getGridCanLoad: function() {
+				return false;
+			},
+			usePager: function() {
+				return false;
+			},
+			getInitialTitle: function() {
+				return null;
+			},
+			createQuickSearchInput: function() {
+			}
+		}, function() {
+			return ss.makeGenericType(Serenity.EntityGrid$1, [TEntity]);
+		}, function() {
+			return [Serenity.IDataGrid, Serenity.ISetEditValue, Serenity.IGetEditValue];
+		});
+		ss.setMetadata($type, { attr: [new Serenity.ElementAttribute('<div/>'), new Serenity.EditorAttribute(), new Serenity.IdPropertyAttribute('__id')] });
+		return $type;
+	};
+	$MovieTutorial_Common_GridEditorBase$1.__typeName = 'MovieTutorial.Common.GridEditorBase$1';
+	ss.initGenericClass($MovieTutorial_Common_GridEditorBase$1, $asm, 1);
+	global.MovieTutorial.Common.GridEditorBase$1 = $MovieTutorial_Common_GridEditorBase$1;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.Common.GridEditorDialog
+	var $MovieTutorial_Common_GridEditorDialog$1 = function(TEntity) {
+		var $type = function() {
+			this.$8$OnSaveField = null;
+			this.$8$OnDeleteField = null;
+			ss.makeGenericType(Serenity.EntityDialog$1, [TEntity]).call(this);
+		};
+		ss.registerGenericClassInstance($type, $MovieTutorial_Common_GridEditorDialog$1, [TEntity], {
+			destroy: function() {
+				this.set_onSave(null);
+				this.set_onDelete(null);
+				ss.makeGenericType(Serenity.EntityDialog$2, [TEntity, Object]).prototype.destroy.call(this);
+			},
+			updateInterface: function() {
+				ss.makeGenericType(Serenity.EntityDialog$2, [TEntity, Object]).prototype.updateInterface.call(this);
+				// apply changes button doesn't work properly with in-memory grids yet
+				if (ss.isValue(this.applyChangesButton)) {
+					this.applyChangesButton.hide();
+				}
+			},
+			saveHandler: function(options, callback) {
+				if (!ss.staticEquals(this.get_onSave(), null)) {
+					this.get_onSave()(options, callback);
+				}
+			},
+			deleteHandler: function(options, callback) {
+				if (!ss.staticEquals(this.get_onDelete(), null)) {
+					this.get_onDelete()(options, callback);
+				}
+			},
+			get_onSave: function() {
+				return this.$8$OnSaveField;
+			},
+			set_onSave: function(value) {
+				this.$8$OnSaveField = value;
+			},
+			get_onDelete: function() {
+				return this.$8$OnDeleteField;
+			},
+			set_onDelete: function(value) {
+				this.$8$OnDeleteField = value;
+			}
+		}, function() {
+			return ss.makeGenericType(Serenity.EntityDialog$1, [TEntity]);
+		}, function() {
+			return [Serenity.IDialog, Serenity.IEditDialog];
+		});
+		ss.setMetadata($type, { attr: [new Serenity.IdPropertyAttribute('__id')] });
+		return $type;
+	};
+	$MovieTutorial_Common_GridEditorDialog$1.__typeName = 'MovieTutorial.Common.GridEditorDialog$1';
+	ss.initGenericClass($MovieTutorial_Common_GridEditorDialog$1, $asm, 1);
+	global.MovieTutorial.Common.GridEditorDialog$1 = $MovieTutorial_Common_GridEditorDialog$1;
+	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Common.LanguageSelection
 	var $MovieTutorial_Common_LanguageSelection = function(hidden, currentLanguage) {
 		this.$currentLanguage = null;
@@ -2328,6 +2497,8 @@
 	ss.setMetadata($MovieTutorial_Administration_TranslationGrid, { attr: [new Serenity.ColumnsKeyAttribute('Administration.Translation'), new Serenity.IdPropertyAttribute('Key'), new Serenity.LocalTextPrefixAttribute('Administration.Translation'), new Serenity.ServiceAttribute('Administration/Translation')] });
 	ss.setMetadata($MovieTutorial_Administration_UserDialog, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.FormKeyAttribute('Administration.User'), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
 	ss.setMetadata($MovieTutorial_Administration_UserGrid, { attr: [new Serenity.IdPropertyAttribute('UserId'), new Serenity.NamePropertyAttribute('Username'), new Serenity.IsActivePropertyAttribute('IsActive'), new Serenity.DialogTypeAttribute($MovieTutorial_Administration_UserDialog), new Serenity.LocalTextPrefixAttribute('Administration.User'), new Serenity.ServiceAttribute('Administration/User')] });
+	ss.setMetadata($MovieTutorial_Common_GridEditorBase$1, { attr: [new Serenity.ElementAttribute('<div/>'), new Serenity.EditorAttribute(), new Serenity.IdPropertyAttribute('__id')] });
+	ss.setMetadata($MovieTutorial_Common_GridEditorDialog$1, { attr: [new Serenity.IdPropertyAttribute('__id')] });
 	ss.setMetadata($MovieTutorial_Membership_LoginPanel, { attr: [new Serenity.PanelAttribute(), new Serenity.FormKeyAttribute('Membership.Login')] });
 	ss.setMetadata($MovieTutorial_MovieDB_Gender, { attr: [new Serenity.EnumKeyAttribute('MovieDB.Gender')] });
 	ss.setMetadata($MovieTutorial_MovieDB_GenreDialog, { attr: [new Serenity.IdPropertyAttribute('GenreId'), new Serenity.NamePropertyAttribute('Name'), new Serenity.FormKeyAttribute('MovieDB.Genre'), new Serenity.LocalTextPrefixAttribute('MovieDB.Genre'), new Serenity.ServiceAttribute('MovieDB/Genre')] });
