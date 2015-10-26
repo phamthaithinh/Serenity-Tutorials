@@ -15,6 +15,9 @@ namespace MovieTutorial.MovieDB
         [InlineConstant] public const string IdProperty = "PersonId";
         [InlineConstant] public const string NameProperty = "Fullname";
         [InlineConstant] public const string LocalTextPrefix = "MovieDB.Person";
+        [InlineConstant] public const string LookupKey = "MovieDB.Person";
+    
+        public static Lookup<PersonRow> Lookup { [InlineCode("Q.getLookup('MovieDB.Person')")] get { return null; } }
     
         public Int32? PersonId { get; set; }
         public String Firstname { get; set; }

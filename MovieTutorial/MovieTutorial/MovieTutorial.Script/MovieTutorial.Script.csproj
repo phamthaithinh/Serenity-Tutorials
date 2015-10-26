@@ -56,6 +56,9 @@
     <Compile Include="Imports\FormContexts\MovieDB.GenreForm.cs">
       <DependentUpon>FormContexts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\FormContexts\MovieDB.MovieCastForm.cs">
+      <DependentUpon>FormContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\FormContexts\MovieDB.MovieForm.cs">
       <DependentUpon>FormContexts.tt</DependentUpon>
     </Compile>
@@ -194,6 +197,12 @@
     <Compile Include="Imports\ServiceContracts\MovieDB.GenreService.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ServiceContracts\MovieDB.MovieCastRow.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ServiceContracts\MovieDB.MovieCastService.cs">
+      <DependentUpon>ServiceContracts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ServiceContracts\MovieDB.MovieKind.cs">
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
@@ -288,6 +297,7 @@
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
     <Compile Include="Membership\LoginPanel.cs" />
+    <Compile Include="MovieDB\MovieCast\MovieCastEditor.cs" />
     <Compile Include="Northwind\Shared\PhoneEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptInitialization.cs" />

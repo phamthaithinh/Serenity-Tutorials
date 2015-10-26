@@ -681,12 +681,47 @@
 	$MovieTutorial_MovieDB_MovieCastDialog.__typeName = 'MovieTutorial.MovieDB.MovieCastDialog';
 	global.MovieTutorial.MovieDB.MovieCastDialog = $MovieTutorial_MovieDB_MovieCastDialog;
 	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.MovieCastEditor
+	var $MovieTutorial_MovieDB_MovieCastEditor = function(container) {
+		ss.makeGenericType($MovieTutorial_Common_GridEditorBase$1, [Object]).call(this, container);
+	};
+	$MovieTutorial_MovieDB_MovieCastEditor.__typeName = 'MovieTutorial.MovieDB.MovieCastEditor';
+	global.MovieTutorial.MovieDB.MovieCastEditor = $MovieTutorial_MovieDB_MovieCastEditor;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.MovieCastForm
+	var $MovieTutorial_MovieDB_MovieCastForm = function(idPrefix) {
+		Serenity.PrefixedContext.call(this, idPrefix);
+	};
+	$MovieTutorial_MovieDB_MovieCastForm.__typeName = 'MovieTutorial.MovieDB.MovieCastForm';
+	global.MovieTutorial.MovieDB.MovieCastForm = $MovieTutorial_MovieDB_MovieCastForm;
+	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieCastGrid
 	var $MovieTutorial_MovieDB_MovieCastGrid = function(container) {
 		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
 	};
 	$MovieTutorial_MovieDB_MovieCastGrid.__typeName = 'MovieTutorial.MovieDB.MovieCastGrid';
 	global.MovieTutorial.MovieDB.MovieCastGrid = $MovieTutorial_MovieDB_MovieCastGrid;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.MovieCastService
+	var $MovieTutorial_MovieDB_MovieCastService = function() {
+	};
+	$MovieTutorial_MovieDB_MovieCastService.__typeName = 'MovieTutorial.MovieDB.MovieCastService';
+	$MovieTutorial_MovieDB_MovieCastService.create = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/MovieCast/Create', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_MovieCastService.update = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/MovieCast/Update', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_MovieCastService.delete$1 = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/MovieCast/Delete', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_MovieCastService.retrieve = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/MovieCast/Retrieve', request, onSuccess, options);
+	};
+	$MovieTutorial_MovieDB_MovieCastService.list = function(request, onSuccess, options) {
+		return Q.serviceRequest('MovieDB/MovieCast/List', request, onSuccess, options);
+	};
+	global.MovieTutorial.MovieDB.MovieCastService = $MovieTutorial_MovieDB_MovieCastService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieDialog
 	var $MovieTutorial_MovieDB_MovieDialog = function() {
@@ -1922,7 +1957,20 @@
 	ss.initClass($MovieTutorial_MovieDB_GenreGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_MovieDB_GenreService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_MovieCastDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
+	ss.initClass($MovieTutorial_MovieDB_MovieCastEditor, $asm, {}, ss.makeGenericType($MovieTutorial_Common_GridEditorBase$1, [Object]), [Serenity.IDataGrid, Serenity.ISetEditValue, Serenity.IGetEditValue]);
+	ss.initClass($MovieTutorial_MovieDB_MovieCastForm, $asm, {
+		get_movieId: function() {
+			return this.byId(Serenity.IntegerEditor).call(this, 'MovieId');
+		},
+		get_personId: function() {
+			return this.byId(Serenity.IntegerEditor).call(this, 'PersonId');
+		},
+		get_character: function() {
+			return this.byId(Serenity.StringEditor).call(this, 'Character');
+		}
+	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_MovieCastGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
+	ss.initClass($MovieTutorial_MovieDB_MovieCastService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieForm, $asm, {
 		get_title: function() {
@@ -2504,6 +2552,7 @@
 	ss.setMetadata($MovieTutorial_MovieDB_GenreDialog, { attr: [new Serenity.IdPropertyAttribute('GenreId'), new Serenity.NamePropertyAttribute('Name'), new Serenity.FormKeyAttribute('MovieDB.Genre'), new Serenity.LocalTextPrefixAttribute('MovieDB.Genre'), new Serenity.ServiceAttribute('MovieDB/Genre')] });
 	ss.setMetadata($MovieTutorial_MovieDB_GenreGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Genre'), new Serenity.IdPropertyAttribute('GenreId'), new Serenity.NamePropertyAttribute('Name'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_GenreDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Genre'), new Serenity.ServiceAttribute('MovieDB/Genre')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieCastDialog, { attr: [new Serenity.IdPropertyAttribute('MovieCastId'), new Serenity.NamePropertyAttribute('Character'), new Serenity.FormKeyAttribute('MovieDB.MovieCast'), new Serenity.LocalTextPrefixAttribute('MovieDB.MovieCast'), new Serenity.ServiceAttribute('MovieDB/MovieCast')] });
+	ss.setMetadata($MovieTutorial_MovieDB_MovieCastEditor, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.MovieCast'), new Serenity.LocalTextPrefixAttribute('MovieDB.MovieCast')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieCastGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.MovieCast'), new Serenity.IdPropertyAttribute('MovieCastId'), new Serenity.NamePropertyAttribute('Character'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_MovieCastDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.MovieCast'), new Serenity.ServiceAttribute('MovieDB/MovieCast')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieDialog, { attr: [new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.FormKeyAttribute('MovieDB.Movie'), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
 	ss.setMetadata($MovieTutorial_MovieDB_MovieGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Movie'), new Serenity.IdPropertyAttribute('MovieId'), new Serenity.NamePropertyAttribute('Title'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_MovieDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Movie'), new Serenity.ServiceAttribute('MovieDB/Movie')] });
