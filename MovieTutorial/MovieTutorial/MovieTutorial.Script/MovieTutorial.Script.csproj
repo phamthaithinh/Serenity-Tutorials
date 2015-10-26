@@ -297,6 +297,7 @@
       <DependentUpon>ServiceContracts.tt</DependentUpon>
     </Compile>
     <Compile Include="Membership\LoginPanel.cs" />
+    <Compile Include="MovieDB\MovieCast\MovieCastEditDialog.cs" />
     <Compile Include="MovieDB\MovieCast\MovieCastEditor.cs" />
     <Compile Include="Northwind\Shared\PhoneEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
