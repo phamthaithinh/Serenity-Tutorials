@@ -1143,9 +1143,6 @@ a,
 .s-GenreDialog .s-PropertyGrid .categories {
   height: 260px;
 }
-/* ------------------------------------------------------------------------- */
-/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
-/* ------------------------------------------------------------------------- */
 .s-PersonDialog > .size {
   min-width: 650px;
   width: 650px;
@@ -1184,44 +1181,41 @@ a,
 .s-PersonDialog .s-PropertyGrid .categories {
   height: 260px;
 }
-/* ------------------------------------------------------------------------- */
-/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
-/* ------------------------------------------------------------------------- */
-.s-MovieCastDialog > .size {
-  min-width: 650px;
-  width: 650px;
+.s-MovieCastEditDialog > .size {
+  min-width: 550px;
+  width: 550px;
 }
-.s-MovieCastDialog .tab-pane {
+.s-MovieCastEditDialog .tab-pane {
   height: auto;
 }
-.s-MovieCastDialog .caption {
+.s-MovieCastEditDialog .caption {
   width: 150px;
 }
-.s-MovieCastDialog .editor {
-  width: 400px;
+.s-MovieCastEditDialog .editor {
+  width: 300px;
 }
-.s-MovieCastDialog input.editor[type=checkbox] {
+.s-MovieCastEditDialog input.editor[type=checkbox] {
   width: auto;
 }
-.s-MovieCastDialog .s-Form .editor.dateQ {
-  width: 383px;
+.s-MovieCastEditDialog .s-Form .editor.dateQ {
+  width: 283px;
 }
-.s-MovieCastDialog .s-Form .editor.emailuser {
+.s-MovieCastEditDialog .s-Form .editor.emailuser {
   width: 170px;
 }
-.s-MovieCastDialog .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 323px;
+.s-MovieCastEditDialog .s-Form .editor.dateQ.s-DateTimeEditor {
+  width: 223px;
 }
-.s-MovieCastDialog .s-Form .editor.s-DateTimeEditor.time {
+.s-MovieCastEditDialog .s-Form .editor.s-DateTimeEditor.time {
   width: 56px;
   margin-left: 4px;
 }
-.s-MovieCastDialog .s-Form .editor.has-inplace-button {
-  width: 374px;
+.s-MovieCastEditDialog .s-Form .editor.has-inplace-button {
+  width: 274px;
 }
-.s-MovieCastDialog .s-Form .emaildomain {
-  width: 215px;
+.s-MovieCastEditDialog .s-Form .emaildomain {
+  width: 115px;
 }
-.s-MovieCastDialog .s-PropertyGrid .categories {
-  height: 260px;
+.s-MovieCastEditDialog .s-PropertyGrid .categories {
+  height: 160px;
 }
