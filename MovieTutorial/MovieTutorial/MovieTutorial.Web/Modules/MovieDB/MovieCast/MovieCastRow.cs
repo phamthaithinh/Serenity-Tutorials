@@ -10,7 +10,7 @@ namespace MovieTutorial.MovieDB.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), DisplayName("MovieCast"), InstanceName("MovieCast"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("Movie Casts"), InstanceName("Cast"), TwoLevelCached]
     [ReadPermission("Administration")]
     [ModifyPermission("Administration")]
     [JsonConverter(typeof(JsonRowConverter))]
@@ -30,7 +30,7 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.MovieId[this] = value; }
         }
 
-        [DisplayName("Person Id"), NotNull, ForeignKey("[mov].Person", "PersonId"), LeftJoin("jPerson")]
+        [DisplayName("Actor/Actress"), NotNull, ForeignKey("[mov].Person", "PersonId"), LeftJoin("jPerson")]
         public Int32? PersonId
         {
             get { return Fields.PersonId[this]; }
