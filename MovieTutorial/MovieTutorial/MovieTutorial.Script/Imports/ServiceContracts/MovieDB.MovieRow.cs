@@ -26,6 +26,7 @@ namespace MovieTutorial.MovieDB
         public MovieKind? Kind { get; set; }
         public Int32? GenreId { get; set; }
         public String GenreName { get; set; }
+        public List<MovieCastRow> CastList { get; set; }
     
         [Imported, PreserveMemberCase]
         public static class Fields
@@ -40,6 +41,7 @@ namespace MovieTutorial.MovieDB
             [InlineConstant] public const string Kind = "Kind";
             [InlineConstant] public const string GenreId = "GenreId";
             [InlineConstant] public const string GenreName = "GenreName";
+            [InlineConstant] public const string CastList = "CastList";
         }
     }
     

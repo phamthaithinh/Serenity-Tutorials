@@ -7,6 +7,7 @@ namespace MovieTutorial.MovieDB.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.IO;
 
@@ -87,6 +88,13 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.GenreName[this] = value; }
         }
 
+        [SetFieldFlags(FieldFlags.ClientSide)]
+        public List<MovieCastRow> CastList
+        {
+            get { return Fields.CastList[this]; }
+            set { Fields.CastList[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.MovieId; }
@@ -116,6 +124,8 @@ namespace MovieTutorial.MovieDB.Entities
             public readonly Int32Field Kind;
             public readonly Int32Field GenreId;
             public readonly StringField GenreName;
+
+            public readonly RowListField<MovieCastRow> CastList;
 
             public RowFields()
                 : base("[mov].Movie")
