@@ -88,7 +88,7 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.GenreName[this] = value; }
         }
 
-        [SetFieldFlags(FieldFlags.ClientSide)]
+        [DisplayName("Cast List"), SetFieldFlags(FieldFlags.ClientSide)]
         public List<MovieCastRow> CastList
         {
             get { return Fields.CastList[this]; }
