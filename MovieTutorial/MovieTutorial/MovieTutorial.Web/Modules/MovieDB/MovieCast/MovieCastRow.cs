@@ -114,6 +114,13 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.PersonLastname[this] = value; }
         }
 
+        [DisplayName("Actor/Actress"), Expression("(jPerson.Firstname + ' ' + jPerson.Lastname)")]
+        public String PersonFullname
+        {
+            get { return Fields.PersonFullname[this]; }
+            set { Fields.PersonFullname[this] = value; }
+        }
+
         [DisplayName("Person Birth Date"), Expression("jPerson.BirthDate")]
         public DateTime? PersonBirthDate
         {
@@ -177,6 +184,7 @@ namespace MovieTutorial.MovieDB.Entities
 
             public readonly StringField PersonFirstname;
             public readonly StringField PersonLastname;
+            public readonly StringField PersonFullname;
             public readonly DateTimeField PersonBirthDate;
             public readonly StringField PersonBirthPlace;
             public readonly Int32Field PersonGender;
