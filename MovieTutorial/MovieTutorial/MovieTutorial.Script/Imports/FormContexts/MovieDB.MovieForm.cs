@@ -17,6 +17,7 @@ namespace MovieTutorial.MovieDB
     
         public StringEditor Title { get { return ById<StringEditor>("Title"); } }
         public TextAreaEditor Description { get { return ById<TextAreaEditor>("Description"); } }
+        public MovieCastEditor CastList { get { return ById<MovieCastEditor>("CastList"); } }
         public TextAreaEditor Storyline { get { return ById<TextAreaEditor>("Storyline"); } }
         public IntegerEditor Year { get { return ById<IntegerEditor>("Year"); } }
         public DateEditor ReleaseDate { get { return ById<DateEditor>("ReleaseDate"); } }

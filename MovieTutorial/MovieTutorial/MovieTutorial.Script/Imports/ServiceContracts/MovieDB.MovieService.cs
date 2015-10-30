@@ -7,33 +7,39 @@ namespace MovieTutorial.MovieDB
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
+    [Imported, PreserveMemberCase]
     public partial class MovieService
     {
         [InlineConstant] public const string BaseUrl = "MovieDB/Movie";
     
+        [InlineCode("Q.serviceRequest('MovieDB/Movie/Create', {request}, {onSuccess}, {options})")]
         public static jQueryXmlHttpRequest Create(SaveRequest<MovieRow> request, Action<SaveResponse> onSuccess, ServiceCallOptions options = null)
         {
-            return Q.ServiceRequest(Methods.Create, request, onSuccess, options);
+            return null;
         }
     
+        [InlineCode("Q.serviceRequest('MovieDB/Movie/Update', {request}, {onSuccess}, {options})")]
         public static jQueryXmlHttpRequest Update(SaveRequest<MovieRow> request, Action<SaveResponse> onSuccess, ServiceCallOptions options = null)
         {
-            return Q.ServiceRequest(Methods.Update, request, onSuccess, options);
+            return null;
         }
     
+        [InlineCode("Q.serviceRequest('MovieDB/Movie/Delete', {request}, {onSuccess}, {options})")]
         public static jQueryXmlHttpRequest Delete(DeleteRequest request, Action<DeleteResponse> onSuccess, ServiceCallOptions options = null)
         {
-            return Q.ServiceRequest(Methods.Delete, request, onSuccess, options);
+            return null;
         }
     
+        [InlineCode("Q.serviceRequest('MovieDB/Movie/Retrieve', {request}, {onSuccess}, {options})")]
         public static jQueryXmlHttpRequest Retrieve(RetrieveRequest request, Action<RetrieveResponse<MovieRow>> onSuccess, ServiceCallOptions options = null)
         {
-            return Q.ServiceRequest(Methods.Retrieve, request, onSuccess, options);
+            return null;
         }
     
+        [InlineCode("Q.serviceRequest('MovieDB/Movie/List', {request}, {onSuccess}, {options})")]
         public static jQueryXmlHttpRequest List(ListRequest request, Action<ListResponse<MovieRow>> onSuccess, ServiceCallOptions options = null)
         {
-            return Q.ServiceRequest(Methods.List, request, onSuccess, options);
+            return null;
         }
     
         [Imported, PreserveMemberCase]

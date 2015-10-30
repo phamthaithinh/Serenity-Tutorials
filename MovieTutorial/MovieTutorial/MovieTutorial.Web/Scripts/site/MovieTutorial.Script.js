@@ -36,27 +36,6 @@
 	$MovieTutorial_Administration_LanguageGrid.__typeName = 'MovieTutorial.Administration.LanguageGrid';
 	global.MovieTutorial.Administration.LanguageGrid = $MovieTutorial_Administration_LanguageGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.LanguageService
-	var $MovieTutorial_Administration_LanguageService = function() {
-	};
-	$MovieTutorial_Administration_LanguageService.__typeName = 'MovieTutorial.Administration.LanguageService';
-	$MovieTutorial_Administration_LanguageService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Language/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_LanguageService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Language/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_LanguageService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Language/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_LanguageService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Language/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_LanguageService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Language/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.LanguageService = $MovieTutorial_Administration_LanguageService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Administration.PermissionCheckEditor
 	var $MovieTutorial_Administration_PermissionCheckEditor = function(div) {
 		this.$containsText = null;
@@ -139,45 +118,12 @@
 		this.$permissions = null;
 		ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).$ctor1.call(this, opt);
 		this.$permissions = new $MovieTutorial_Administration_PermissionCheckEditor(this.byId$1('Permissions'));
-		$MovieTutorial_Administration_RolePermissionService.list({ RoleID: this.options.roleID, Module: null, Submodule: null }, ss.mkdel(this, function(response) {
+		Q.serviceRequest('Administration/RolePermission/List', { RoleID: this.options.roleID, Module: null, Submodule: null }, ss.mkdel(this, function(response) {
 			this.$permissions.set_value(response.Entities);
 		}), null);
 	};
 	$MovieTutorial_Administration_RolePermissionDialog.__typeName = 'MovieTutorial.Administration.RolePermissionDialog';
 	global.MovieTutorial.Administration.RolePermissionDialog = $MovieTutorial_Administration_RolePermissionDialog;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.RolePermissionService
-	var $MovieTutorial_Administration_RolePermissionService = function() {
-	};
-	$MovieTutorial_Administration_RolePermissionService.__typeName = 'MovieTutorial.Administration.RolePermissionService';
-	$MovieTutorial_Administration_RolePermissionService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/RolePermission/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_RolePermissionService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/RolePermission/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.RolePermissionService = $MovieTutorial_Administration_RolePermissionService;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.RoleService
-	var $MovieTutorial_Administration_RoleService = function() {
-	};
-	$MovieTutorial_Administration_RoleService.__typeName = 'MovieTutorial.Administration.RoleService';
-	$MovieTutorial_Administration_RoleService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Role/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_RoleService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Role/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_RoleService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Role/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_RoleService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Role/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_RoleService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Role/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.RoleService = $MovieTutorial_Administration_RoleService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Administration.TranslationGrid
 	var $MovieTutorial_Administration_TranslationGrid = function(container) {
@@ -198,18 +144,6 @@
 	};
 	$MovieTutorial_Administration_TranslationGrid.__typeName = 'MovieTutorial.Administration.TranslationGrid';
 	global.MovieTutorial.Administration.TranslationGrid = $MovieTutorial_Administration_TranslationGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.TranslationService
-	var $MovieTutorial_Administration_TranslationService = function() {
-	};
-	$MovieTutorial_Administration_TranslationService.__typeName = 'MovieTutorial.Administration.TranslationService';
-	$MovieTutorial_Administration_TranslationService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Translation/List', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_TranslationService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/Translation/Update', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.TranslationService = $MovieTutorial_Administration_TranslationService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Administration.UserDialog
 	var $MovieTutorial_Administration_UserDialog = function() {
@@ -251,34 +185,19 @@
 		this.$permissions = null;
 		ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).$ctor1.call(this, opt);
 		this.$permissions = new $MovieTutorial_Administration_PermissionCheckEditor(this.byId$1('Permissions'));
-		$MovieTutorial_Administration_UserPermissionService.list({ UserID: this.options.userID, Module: null, Submodule: null }, ss.mkdel(this, function(response) {
+		Q.serviceRequest('Administration/UserPermission/List', { UserID: this.options.userID, Module: null, Submodule: null }, ss.mkdel(this, function(response) {
 			this.$permissions.set_value(response.Entities);
 		}), null);
 	};
 	$MovieTutorial_Administration_UserPermissionDialog.__typeName = 'MovieTutorial.Administration.UserPermissionDialog';
 	global.MovieTutorial.Administration.UserPermissionDialog = $MovieTutorial_Administration_UserPermissionDialog;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.UserPermissionService
-	var $MovieTutorial_Administration_UserPermissionService = function() {
-	};
-	$MovieTutorial_Administration_UserPermissionService.__typeName = 'MovieTutorial.Administration.UserPermissionService';
-	$MovieTutorial_Administration_UserPermissionService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/UserPermission/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserPermissionService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/UserPermission/List', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserPermissionService.listPermissionKeys = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/UserPermission/ListPermissionKeys', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.UserPermissionService = $MovieTutorial_Administration_UserPermissionService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Administration.UserRoleDialog
 	var $MovieTutorial_Administration_UserRoleDialog = function(opt) {
 		this.$permissions = null;
 		ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).$ctor1.call(this, opt);
 		this.$permissions = new $MovieTutorial_Administration_RoleCheckEditor(this.byId$1('Roles'));
-		$MovieTutorial_Administration_UserRoleService.list({ UserID: this.options.userID }, ss.mkdel(this, function(response) {
+		Q.serviceRequest('Administration/UserRole/List', { UserID: this.options.userID }, ss.mkdel(this, function(response) {
 			this.$permissions.set_value(Enumerable.from(response.Entities).select(function(x) {
 				return x.toString();
 			}).toArray());
@@ -286,42 +205,6 @@
 	};
 	$MovieTutorial_Administration_UserRoleDialog.__typeName = 'MovieTutorial.Administration.UserRoleDialog';
 	global.MovieTutorial.Administration.UserRoleDialog = $MovieTutorial_Administration_UserRoleDialog;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.UserRoleService
-	var $MovieTutorial_Administration_UserRoleService = function() {
-	};
-	$MovieTutorial_Administration_UserRoleService.__typeName = 'MovieTutorial.Administration.UserRoleService';
-	$MovieTutorial_Administration_UserRoleService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/UserRole/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserRoleService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/UserRole/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.UserRoleService = $MovieTutorial_Administration_UserRoleService;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Administration.UserService
-	var $MovieTutorial_Administration_UserService = function() {
-	};
-	$MovieTutorial_Administration_UserService.__typeName = 'MovieTutorial.Administration.UserService';
-	$MovieTutorial_Administration_UserService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserService.undelete = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/Undelete', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Administration_UserService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Administration/User/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Administration.UserService = $MovieTutorial_Administration_UserService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Common.CascadedEditorHelper
 	var $MovieTutorial_Common_CascadedEditorHelper$2 = function(TWidget, TParentWidget) {
@@ -653,27 +536,6 @@
 	$MovieTutorial_MovieDB_GenreGrid.__typeName = 'MovieTutorial.MovieDB.GenreGrid';
 	global.MovieTutorial.MovieDB.GenreGrid = $MovieTutorial_MovieDB_GenreGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.MovieDB.GenreService
-	var $MovieTutorial_MovieDB_GenreService = function() {
-	};
-	$MovieTutorial_MovieDB_GenreService.__typeName = 'MovieTutorial.MovieDB.GenreService';
-	$MovieTutorial_MovieDB_GenreService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Genre/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_GenreService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Genre/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_GenreService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Genre/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_GenreService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Genre/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_GenreService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Genre/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.MovieDB.GenreService = $MovieTutorial_MovieDB_GenreService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieCastDialog
 	var $MovieTutorial_MovieDB_MovieCastDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -709,27 +571,6 @@
 	$MovieTutorial_MovieDB_MovieCastGrid.__typeName = 'MovieTutorial.MovieDB.MovieCastGrid';
 	global.MovieTutorial.MovieDB.MovieCastGrid = $MovieTutorial_MovieDB_MovieCastGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.MovieDB.MovieCastService
-	var $MovieTutorial_MovieDB_MovieCastService = function() {
-	};
-	$MovieTutorial_MovieDB_MovieCastService.__typeName = 'MovieTutorial.MovieDB.MovieCastService';
-	$MovieTutorial_MovieDB_MovieCastService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/MovieCast/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieCastService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/MovieCast/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieCastService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/MovieCast/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieCastService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/MovieCast/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieCastService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/MovieCast/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.MovieDB.MovieCastService = $MovieTutorial_MovieDB_MovieCastService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.MovieDialog
 	var $MovieTutorial_MovieDB_MovieDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -757,27 +598,6 @@
 	$MovieTutorial_MovieDB_MovieKind.__typeName = 'MovieTutorial.MovieDB.MovieKind';
 	global.MovieTutorial.MovieDB.MovieKind = $MovieTutorial_MovieDB_MovieKind;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.MovieDB.MovieService
-	var $MovieTutorial_MovieDB_MovieService = function() {
-	};
-	$MovieTutorial_MovieDB_MovieService.__typeName = 'MovieTutorial.MovieDB.MovieService';
-	$MovieTutorial_MovieDB_MovieService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Movie/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Movie/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Movie/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Movie/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_MovieService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Movie/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.MovieDB.MovieService = $MovieTutorial_MovieDB_MovieService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.PersonDialog
 	var $MovieTutorial_MovieDB_PersonDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -798,27 +618,6 @@
 	};
 	$MovieTutorial_MovieDB_PersonGrid.__typeName = 'MovieTutorial.MovieDB.PersonGrid';
 	global.MovieTutorial.MovieDB.PersonGrid = $MovieTutorial_MovieDB_PersonGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.MovieDB.PersonService
-	var $MovieTutorial_MovieDB_PersonService = function() {
-	};
-	$MovieTutorial_MovieDB_PersonService.__typeName = 'MovieTutorial.MovieDB.PersonService';
-	$MovieTutorial_MovieDB_PersonService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Person/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_PersonService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Person/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_PersonService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Person/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_PersonService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Person/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_MovieDB_PersonService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('MovieDB/Person/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.MovieDB.PersonService = $MovieTutorial_MovieDB_PersonService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CategoryDialog
 	var $MovieTutorial_Northwind_CategoryDialog = function() {
@@ -841,27 +640,6 @@
 	$MovieTutorial_Northwind_CategoryGrid.__typeName = 'MovieTutorial.Northwind.CategoryGrid';
 	global.MovieTutorial.Northwind.CategoryGrid = $MovieTutorial_Northwind_CategoryGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.CategoryService
-	var $MovieTutorial_Northwind_CategoryService = function() {
-	};
-	$MovieTutorial_Northwind_CategoryService.__typeName = 'MovieTutorial.Northwind.CategoryService';
-	$MovieTutorial_Northwind_CategoryService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Category/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CategoryService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Category/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CategoryService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Category/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CategoryService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Category/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CategoryService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Category/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.CategoryService = $MovieTutorial_Northwind_CategoryService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CustomerCustomerDemoDialog
 	var $MovieTutorial_Northwind_CustomerCustomerDemoDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -883,27 +661,6 @@
 	$MovieTutorial_Northwind_CustomerCustomerDemoGrid.__typeName = 'MovieTutorial.Northwind.CustomerCustomerDemoGrid';
 	global.MovieTutorial.Northwind.CustomerCustomerDemoGrid = $MovieTutorial_Northwind_CustomerCustomerDemoGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.CustomerCustomerDemoService
-	var $MovieTutorial_Northwind_CustomerCustomerDemoService = function() {
-	};
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.__typeName = 'MovieTutorial.Northwind.CustomerCustomerDemoService';
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerCustomerDemo/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerCustomerDemo/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerCustomerDemo/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerCustomerDemo/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerCustomerDemoService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerCustomerDemo/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.CustomerCustomerDemoService = $MovieTutorial_Northwind_CustomerCustomerDemoService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CustomerDemographicDialog
 	var $MovieTutorial_Northwind_CustomerDemographicDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -924,27 +681,6 @@
 	};
 	$MovieTutorial_Northwind_CustomerDemographicGrid.__typeName = 'MovieTutorial.Northwind.CustomerDemographicGrid';
 	global.MovieTutorial.Northwind.CustomerDemographicGrid = $MovieTutorial_Northwind_CustomerDemographicGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.CustomerDemographicService
-	var $MovieTutorial_Northwind_CustomerDemographicService = function() {
-	};
-	$MovieTutorial_Northwind_CustomerDemographicService.__typeName = 'MovieTutorial.Northwind.CustomerDemographicService';
-	$MovieTutorial_Northwind_CustomerDemographicService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerDemographic/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerDemographicService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerDemographic/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerDemographicService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerDemographic/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerDemographicService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerDemographic/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerDemographicService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/CustomerDemographic/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.CustomerDemographicService = $MovieTutorial_Northwind_CustomerDemographicService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CustomerDialog
 	var $MovieTutorial_Northwind_CustomerDialog = function() {
@@ -968,27 +704,6 @@
 	$MovieTutorial_Northwind_CustomerGrid.__typeName = 'MovieTutorial.Northwind.CustomerGrid';
 	global.MovieTutorial.Northwind.CustomerGrid = $MovieTutorial_Northwind_CustomerGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.CustomerService
-	var $MovieTutorial_Northwind_CustomerService = function() {
-	};
-	$MovieTutorial_Northwind_CustomerService.__typeName = 'MovieTutorial.Northwind.CustomerService';
-	$MovieTutorial_Northwind_CustomerService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Customer/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Customer/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Customer/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Customer/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_CustomerService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Customer/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.CustomerService = $MovieTutorial_Northwind_CustomerService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.EmployeeDialog
 	var $MovieTutorial_Northwind_EmployeeDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1009,27 +724,6 @@
 	};
 	$MovieTutorial_Northwind_EmployeeGrid.__typeName = 'MovieTutorial.Northwind.EmployeeGrid';
 	global.MovieTutorial.Northwind.EmployeeGrid = $MovieTutorial_Northwind_EmployeeGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.EmployeeService
-	var $MovieTutorial_Northwind_EmployeeService = function() {
-	};
-	$MovieTutorial_Northwind_EmployeeService.__typeName = 'MovieTutorial.Northwind.EmployeeService';
-	$MovieTutorial_Northwind_EmployeeService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Employee/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Employee/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Employee/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Employee/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Employee/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.EmployeeService = $MovieTutorial_Northwind_EmployeeService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.EmployeeTerritoryDialog
 	var $MovieTutorial_Northwind_EmployeeTerritoryDialog = function() {
@@ -1052,27 +746,6 @@
 	$MovieTutorial_Northwind_EmployeeTerritoryGrid.__typeName = 'MovieTutorial.Northwind.EmployeeTerritoryGrid';
 	global.MovieTutorial.Northwind.EmployeeTerritoryGrid = $MovieTutorial_Northwind_EmployeeTerritoryGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.EmployeeTerritoryService
-	var $MovieTutorial_Northwind_EmployeeTerritoryService = function() {
-	};
-	$MovieTutorial_Northwind_EmployeeTerritoryService.__typeName = 'MovieTutorial.Northwind.EmployeeTerritoryService';
-	$MovieTutorial_Northwind_EmployeeTerritoryService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/EmployeeTerritory/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeTerritoryService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/EmployeeTerritory/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeTerritoryService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/EmployeeTerritory/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeTerritoryService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/EmployeeTerritory/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_EmployeeTerritoryService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/EmployeeTerritory/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.EmployeeTerritoryService = $MovieTutorial_Northwind_EmployeeTerritoryService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.OrderDetailDialog
 	var $MovieTutorial_Northwind_OrderDetailDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1094,27 +767,6 @@
 	$MovieTutorial_Northwind_OrderDetailGrid.__typeName = 'MovieTutorial.Northwind.OrderDetailGrid';
 	global.MovieTutorial.Northwind.OrderDetailGrid = $MovieTutorial_Northwind_OrderDetailGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.OrderDetailService
-	var $MovieTutorial_Northwind_OrderDetailService = function() {
-	};
-	$MovieTutorial_Northwind_OrderDetailService.__typeName = 'MovieTutorial.Northwind.OrderDetailService';
-	$MovieTutorial_Northwind_OrderDetailService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/OrderDetail/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderDetailService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/OrderDetail/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderDetailService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/OrderDetail/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderDetailService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/OrderDetail/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderDetailService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/OrderDetail/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.OrderDetailService = $MovieTutorial_Northwind_OrderDetailService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.OrderDialog
 	var $MovieTutorial_Northwind_OrderDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1135,27 +787,6 @@
 	};
 	$MovieTutorial_Northwind_OrderGrid.__typeName = 'MovieTutorial.Northwind.OrderGrid';
 	global.MovieTutorial.Northwind.OrderGrid = $MovieTutorial_Northwind_OrderGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.OrderService
-	var $MovieTutorial_Northwind_OrderService = function() {
-	};
-	$MovieTutorial_Northwind_OrderService.__typeName = 'MovieTutorial.Northwind.OrderService';
-	$MovieTutorial_Northwind_OrderService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Order/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Order/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Order/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Order/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_OrderService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Order/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.OrderService = $MovieTutorial_Northwind_OrderService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.PhoneEditor
 	var $MovieTutorial_Northwind_PhoneEditor = function(input) {
@@ -1290,27 +921,6 @@
 	$MovieTutorial_Northwind_ProductGrid.__typeName = 'MovieTutorial.Northwind.ProductGrid';
 	global.MovieTutorial.Northwind.ProductGrid = $MovieTutorial_Northwind_ProductGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.ProductService
-	var $MovieTutorial_Northwind_ProductService = function() {
-	};
-	$MovieTutorial_Northwind_ProductService.__typeName = 'MovieTutorial.Northwind.ProductService';
-	$MovieTutorial_Northwind_ProductService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Product/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ProductService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Product/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ProductService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Product/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ProductService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Product/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ProductService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Product/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.ProductService = $MovieTutorial_Northwind_ProductService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.RegionDialog
 	var $MovieTutorial_Northwind_RegionDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1332,27 +942,6 @@
 	$MovieTutorial_Northwind_RegionGrid.__typeName = 'MovieTutorial.Northwind.RegionGrid';
 	global.MovieTutorial.Northwind.RegionGrid = $MovieTutorial_Northwind_RegionGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.RegionService
-	var $MovieTutorial_Northwind_RegionService = function() {
-	};
-	$MovieTutorial_Northwind_RegionService.__typeName = 'MovieTutorial.Northwind.RegionService';
-	$MovieTutorial_Northwind_RegionService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Region/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_RegionService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Region/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_RegionService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Region/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_RegionService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Region/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_RegionService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Region/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.RegionService = $MovieTutorial_Northwind_RegionService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.ShipperDialog
 	var $MovieTutorial_Northwind_ShipperDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1373,27 +962,6 @@
 	};
 	$MovieTutorial_Northwind_ShipperGrid.__typeName = 'MovieTutorial.Northwind.ShipperGrid';
 	global.MovieTutorial.Northwind.ShipperGrid = $MovieTutorial_Northwind_ShipperGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.ShipperService
-	var $MovieTutorial_Northwind_ShipperService = function() {
-	};
-	$MovieTutorial_Northwind_ShipperService.__typeName = 'MovieTutorial.Northwind.ShipperService';
-	$MovieTutorial_Northwind_ShipperService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Shipper/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ShipperService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Shipper/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ShipperService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Shipper/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ShipperService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Shipper/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_ShipperService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Shipper/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.ShipperService = $MovieTutorial_Northwind_ShipperService;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.SupplierDialog
 	var $MovieTutorial_Northwind_SupplierDialog = function() {
@@ -1417,27 +985,6 @@
 	$MovieTutorial_Northwind_SupplierGrid.__typeName = 'MovieTutorial.Northwind.SupplierGrid';
 	global.MovieTutorial.Northwind.SupplierGrid = $MovieTutorial_Northwind_SupplierGrid;
 	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.SupplierService
-	var $MovieTutorial_Northwind_SupplierService = function() {
-	};
-	$MovieTutorial_Northwind_SupplierService.__typeName = 'MovieTutorial.Northwind.SupplierService';
-	$MovieTutorial_Northwind_SupplierService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Supplier/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_SupplierService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Supplier/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_SupplierService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Supplier/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_SupplierService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Supplier/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_SupplierService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Supplier/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.SupplierService = $MovieTutorial_Northwind_SupplierService;
-	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.TerritoryDialog
 	var $MovieTutorial_Northwind_TerritoryDialog = function() {
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
@@ -1459,27 +1006,6 @@
 	};
 	$MovieTutorial_Northwind_TerritoryGrid.__typeName = 'MovieTutorial.Northwind.TerritoryGrid';
 	global.MovieTutorial.Northwind.TerritoryGrid = $MovieTutorial_Northwind_TerritoryGrid;
-	////////////////////////////////////////////////////////////////////////////////
-	// MovieTutorial.Northwind.TerritoryService
-	var $MovieTutorial_Northwind_TerritoryService = function() {
-	};
-	$MovieTutorial_Northwind_TerritoryService.__typeName = 'MovieTutorial.Northwind.TerritoryService';
-	$MovieTutorial_Northwind_TerritoryService.create = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Territory/Create', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_TerritoryService.update = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Territory/Update', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_TerritoryService.delete$1 = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Territory/Delete', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_TerritoryService.retrieve = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Territory/Retrieve', request, onSuccess, options);
-	};
-	$MovieTutorial_Northwind_TerritoryService.list = function(request, onSuccess, options) {
-		return Q.serviceRequest('Northwind/Territory/List', request, onSuccess, options);
-	};
-	global.MovieTutorial.Northwind.TerritoryService = $MovieTutorial_Northwind_TerritoryService;
 	ss.initClass($MovieTutorial_ScriptInitialization, $asm, {});
 	ss.initClass($MovieTutorial_Administration_LanguageDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Administration_LanguageForm, $asm, {
@@ -1491,7 +1017,6 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Administration_LanguageGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Administration_LanguageService, $asm, {});
 	ss.initClass($MovieTutorial_Administration_PermissionCheckEditor, $asm, {
 		getButtons: function() {
 			return [];
@@ -1599,7 +1124,7 @@
 			var opt = ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).prototype.getDialogOptions.call(this);
 			var $t1 = [];
 			$t1.push({ text: Q.text('Dialogs.OkButton'), click: ss.mkdel(this, function() {
-				$MovieTutorial_Administration_RolePermissionService.update({ RoleID: this.options.roleID, Permissions: this.$permissions.get_value(), Module: null, Submodule: null }, ss.mkdel(this, function(response) {
+				Q.serviceRequest('Administration/RolePermission/Update', { RoleID: this.options.roleID, Permissions: this.$permissions.get_value(), Module: null, Submodule: null }, ss.mkdel(this, function(response) {
 					this.dialogClose();
 					window.setTimeout(function() {
 						Q.notifySuccess(Q.text('Site.RolePermissionDialog.SaveSuccess'));
@@ -1615,8 +1140,6 @@
 			return "<div id='~_Permissions'></div>";
 		}
 	}, ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]), [Serenity.IDialog]);
-	ss.initClass($MovieTutorial_Administration_RolePermissionService, $asm, {});
-	ss.initClass($MovieTutorial_Administration_RoleService, $asm, {});
 	ss.initClass($MovieTutorial_Administration_TranslationGrid, $asm, {
 		onClick: function(e, row, cell) {
 			ss.makeGenericType(Serenity.DataGrid$2, [Object, Object]).prototype.onClick.call(this, e, row, cell);
@@ -1719,7 +1242,7 @@
 				var item = $t1[$t2];
 				translations[item.Key] = item.CustomText;
 			}
-			return RSVP.resolve($MovieTutorial_Administration_TranslationService.update({ TargetLanguageID: language, Translations: translations }, null, null)).then(ss.mkdel(this, function() {
+			return RSVP.resolve(Q.serviceRequest('Administration/Translation/Update', { TargetLanguageID: language, Translations: translations }, null, null)).then(ss.mkdel(this, function() {
 				this.$hasChanges = false;
 				Q.notifySuccess('User translations in "' + language + '" language are saved to "user.texts.' + language + '.json" ' + 'file under "~/script/site/texts/user/"');
 			}), null);
@@ -1774,7 +1297,6 @@
 			return false;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Administration_TranslationService, $asm, {});
 	ss.initClass($MovieTutorial_Administration_UserDialog, $asm, {
 		getToolbarButtons: function() {
 			var buttons = ss.makeGenericType(Serenity.EntityDialog$2, [Object, Object]).prototype.getToolbarButtons.call(this);
@@ -1833,7 +1355,7 @@
 			var opt = ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).prototype.getDialogOptions.call(this);
 			var $t1 = [];
 			$t1.push({ text: Q.text('Dialogs.OkButton'), click: ss.mkdel(this, function() {
-				$MovieTutorial_Administration_UserPermissionService.update({ UserID: this.options.userID, Permissions: this.$permissions.get_value(), Module: null, Submodule: null }, ss.mkdel(this, function(response) {
+				Q.serviceRequest('Administration/UserPermission/Update', { UserID: this.options.userID, Permissions: this.$permissions.get_value(), Module: null, Submodule: null }, ss.mkdel(this, function(response) {
 					this.dialogClose();
 					window.setTimeout(function() {
 						Q.notifySuccess(Q.text('Site.UserPermissionDialog.SaveSuccess'));
@@ -1849,13 +1371,12 @@
 			return "<div id='~_Permissions'></div>";
 		}
 	}, ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]), [Serenity.IDialog]);
-	ss.initClass($MovieTutorial_Administration_UserPermissionService, $asm, {});
 	ss.initClass($MovieTutorial_Administration_UserRoleDialog, $asm, {
 		getDialogOptions: function() {
 			var opt = ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]).prototype.getDialogOptions.call(this);
 			var $t1 = [];
 			$t1.push({ text: Q.text('Dialogs.OkButton'), click: ss.mkdel(this, function() {
-				$MovieTutorial_Administration_UserRoleService.update({ UserID: this.options.userID, Roles: Enumerable.from(this.$permissions.get_value()).select(function(x) {
+				Q.serviceRequest('Administration/UserRole/Update', { UserID: this.options.userID, Roles: Enumerable.from(this.$permissions.get_value()).select(function(x) {
 					return parseInt(x, 10);
 				}).toArray() }, ss.mkdel(this, function(response) {
 					this.dialogClose();
@@ -1873,8 +1394,6 @@
 			return "<div id='~_Roles'></div>";
 		}
 	}, ss.makeGenericType(Serenity.TemplatedDialog$1, [Object]), [Serenity.IDialog]);
-	ss.initClass($MovieTutorial_Administration_UserRoleService, $asm, {});
-	ss.initClass($MovieTutorial_Administration_UserService, $asm, {});
 	ss.initClass($MovieTutorial_Common_LanguageSelection, $asm, {
 		getLookupAsync: function() {
 			return ss.makeGenericType(Serenity.LookupEditorBase$2, [Object, Object]).prototype.getLookupAsync.call(this).then(ss.mkdel(this, function(x) {
@@ -1962,27 +1481,29 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_GenreGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_MovieDB_GenreService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_MovieCastDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieCastEditDialog, $asm, {}, ss.makeGenericType($MovieTutorial_Common_GridEditorDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieCastEditor, $asm, {
 		getAddButtonCaption: function() {
 			return 'Add';
+		},
+		validateEntity: function(row, id) {
+			if (!ss.makeGenericType($MovieTutorial_Common_GridEditorBase$1, [Object]).prototype.validateEntity.call(this, row, id)) {
+				return false;
+			}
+			row.PersonFullname = Q.getLookup('MovieDB.Person').get_itemById()[ss.unbox(row.PersonId)].Fullname;
+			return true;
 		}
 	}, ss.makeGenericType($MovieTutorial_Common_GridEditorBase$1, [Object]), [Serenity.IDataGrid, Serenity.ISetEditValue, Serenity.IGetEditValue]);
 	ss.initClass($MovieTutorial_MovieDB_MovieCastForm, $asm, {
-		get_movieId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'MovieId');
-		},
 		get_personId: function() {
-			return this.byId(Serenity.IntegerEditor).call(this, 'PersonId');
+			return this.byId(Serenity.LookupEditor).call(this, 'PersonId');
 		},
 		get_character: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Character');
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_MovieCastGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_MovieDB_MovieCastService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_MovieDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_MovieForm, $asm, {
 		get_title: function() {
@@ -1990,6 +1511,9 @@
 		},
 		get_description: function() {
 			return this.byId(Serenity.TextAreaEditor).call(this, 'Description');
+		},
+		get_castList: function() {
+			return this.byId($MovieTutorial_MovieDB_MovieCastEditor).call(this, 'CastList');
 		},
 		get_storyline: function() {
 			return this.byId(Serenity.TextAreaEditor).call(this, 'Storyline');
@@ -2021,7 +1545,6 @@
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initEnum($MovieTutorial_MovieDB_MovieKind, $asm, { Film: 1, TvSeries: 2, MiniSeries: 3 });
-	ss.initClass($MovieTutorial_MovieDB_MovieService, $asm, {});
 	ss.initClass($MovieTutorial_MovieDB_PersonDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_PersonForm, $asm, {
 		get_firstname: function() {
@@ -2044,7 +1567,6 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_PersonGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_MovieDB_PersonService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_CategoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CategoryForm, $asm, {
 		get_categoryName: function() {
@@ -2055,7 +1577,6 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Northwind_CategoryGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_CategoryService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_CustomerCustomerDemoDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CustomerCustomerDemoForm, $asm, {
 		get_customerID: function() {
@@ -2074,7 +1595,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_CustomerCustomerDemoService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_CustomerDemographicDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CustomerDemographicForm, $asm, {
 		get_customerTypeID: function() {
@@ -2093,7 +1613,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_CustomerDemographicService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_CustomerDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CustomerForm, $asm, {
 		get_customerID: function() {
@@ -2153,7 +1672,6 @@
 			return true;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_CustomerService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_EmployeeDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_EmployeeForm, $asm, {
 		get_lastName: function() {
@@ -2232,7 +1750,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_EmployeeService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_EmployeeTerritoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_EmployeeTerritoryForm, $asm, {
 		get_territoryID: function() {
@@ -2247,7 +1764,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_EmployeeTerritoryService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_OrderDetailDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_OrderDetailForm, $asm, {
 		get_productID: function() {
@@ -2274,7 +1790,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_OrderDetailService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_OrderDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_OrderForm, $asm, {
 		get_customerID: function() {
@@ -2337,7 +1852,6 @@
 			return columns;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_OrderService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_PhoneEditor, $asm, {
 		formatValue: function() {
 			this.element.val(this.getFormattedValue());
@@ -2428,7 +1942,6 @@
 			return true;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_Northwind_ProductService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_RegionDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_RegionForm, $asm, {
 		get_regionID: function() {
@@ -2439,7 +1952,6 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Northwind_RegionGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_RegionService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_ShipperDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_ShipperForm, $asm, {
 		get_companyName: function() {
@@ -2450,7 +1962,6 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_Northwind_ShipperGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_ShipperService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_SupplierDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_SupplierForm, $asm, {
 		get_companyName: function() {
@@ -2510,7 +2021,6 @@
 			return true;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_SupplierService, $asm, {});
 	ss.initClass($MovieTutorial_Northwind_TerritoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_TerritoryForm, $asm, {
 		get_territoryID: function() {
@@ -2546,7 +2056,6 @@
 			return true;
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid, Serenity.IAsyncInit]);
-	ss.initClass($MovieTutorial_Northwind_TerritoryService, $asm, {});
 	ss.setMetadata($MovieTutorial_Administration_LanguageDialog, { attr: [new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('LanguageName'), new Serenity.FormKeyAttribute('Administration.Language'), new Serenity.LocalTextPrefixAttribute('Administration.Language'), new Serenity.ServiceAttribute('Administration/Language')] });
 	ss.setMetadata($MovieTutorial_Administration_LanguageGrid, { attr: [new Serenity.ColumnsKeyAttribute('Administration.Language'), new Serenity.IdPropertyAttribute('Id'), new Serenity.NamePropertyAttribute('LanguageName'), new Serenity.DialogTypeAttribute($MovieTutorial_Administration_LanguageDialog), new Serenity.LocalTextPrefixAttribute('Administration.Language'), new Serenity.ServiceAttribute('Administration/Language')] });
 	ss.setMetadata($MovieTutorial_Administration_PermissionCheckEditor, { attr: [new Serenity.EditorAttribute()] });

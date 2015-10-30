@@ -15,8 +15,7 @@ namespace MovieTutorial.MovieDB
     
         public MovieCastForm(string idPrefix) : base(idPrefix) {}
     
-        public IntegerEditor MovieId { get { return ById<IntegerEditor>("MovieId"); } }
-        public IntegerEditor PersonId { get { return ById<IntegerEditor>("PersonId"); } }
+        public LookupEditor PersonId { get { return ById<LookupEditor>("PersonId"); } }
         public StringEditor Character { get { return ById<StringEditor>("Character"); } }
     }
 }

@@ -19,5 +19,15 @@ namespace MovieTutorial.MovieDB
         {
             return "Add";
         }
+
+        protected override bool ValidateEntity(MovieCastRow row, int? id)
+        {
+            if (!base.ValidateEntity(row, id))
+                return false;
+
+            row.PersonFullname = PersonRow.Lookup.ItemById[row.PersonId.Value].Fullname;
+
+            return true;
+        }
     }
 }

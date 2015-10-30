@@ -30,6 +30,7 @@ namespace MovieTutorial.MovieDB
         public Int32? MovieGenreId { get; set; }
         public String PersonFirstname { get; set; }
         public String PersonLastname { get; set; }
+        public String PersonFullname { get; set; }
         public String PersonBirthDate { get; set; }
         public String PersonBirthPlace { get; set; }
         public Int32? PersonGender { get; set; }
@@ -52,6 +53,7 @@ namespace MovieTutorial.MovieDB
             [InlineConstant] public const string MovieGenreId = "MovieGenreId";
             [InlineConstant] public const string PersonFirstname = "PersonFirstname";
             [InlineConstant] public const string PersonLastname = "PersonLastname";
+            [InlineConstant] public const string PersonFullname = "PersonFullname";
             [InlineConstant] public const string PersonBirthDate = "PersonBirthDate";
             [InlineConstant] public const string PersonBirthPlace = "PersonBirthPlace";
             [InlineConstant] public const string PersonGender = "PersonGender";
