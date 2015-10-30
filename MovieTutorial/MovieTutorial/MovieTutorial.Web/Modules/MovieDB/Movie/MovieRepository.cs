@@ -5,6 +5,7 @@ namespace MovieTutorial.MovieDB.Repositories
     using Serenity.Data;
     using Serenity.Services;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using MyRow = Entities.MovieRow;
 
@@ -37,9 +38,39 @@ namespace MovieTutorial.MovieDB.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+
+                if (Row.CastList != null)
+                {
+                    var mc = Entities.MovieCastRow.Fields;
+                    var oldList = IsCreate ? null :
+                        Connection.List<Entities.MovieCastRow>(mc.MovieId == this.Row.MovieId.Value);
+
+                    new Common.DetailListSaveHandler<Entities.MovieCastRow>(oldList, Row.CastList,
+                        x => x.MovieId = Row.MovieId.Value).Process(this.UnitOfWork);
+                }
+            }
+        }
+
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
+
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
+        {
+            protected override void OnReturn()
+            {
+                base.OnReturn();
+
+                var mc = Entities.MovieCastRow.Fields;
+                Row.CastList = Connection.List<Entities.MovieCastRow>(q => q
+                    .SelectTableFields()
+                    .Select(mc.PersonFullname));
+            }
+        }
+
         private class MyListHandler : ListRequestHandler<MyRow> { }
     }
 }
