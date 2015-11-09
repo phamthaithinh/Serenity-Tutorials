@@ -114,7 +114,7 @@ namespace MovieTutorial.MovieDB.Entities
             set { Fields.PersonLastname[this] = value; }
         }
 
-        [DisplayName("Actor/Actress"), Expression("(jPerson.Firstname + ' ' + jPerson.Lastname)")]
+        [DisplayName("Actor/Actress"), Expression("(jPerson.Firstname + ' ' + jPerson.Lastname)"), MinSelectLevel(SelectLevel.List)]
         public String PersonFullname
         {
             get { return Fields.PersonFullname[this]; }
