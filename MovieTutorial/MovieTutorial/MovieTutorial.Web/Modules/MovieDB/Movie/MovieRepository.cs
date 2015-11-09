@@ -56,7 +56,27 @@ namespace MovieTutorial.MovieDB.Repositories
             }
         }
 
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow>
+        {
+            protected override void OnBeforeDelete()
+            {
+                base.OnBeforeDelete();
+
+                var mc = Entities.MovieCastRow.Fields;
+                foreach (var detailID in Connection.Query<Int32>(
+                    new SqlQuery()
+                        .From(mc)
+                        .Select(mc.MovieCastId)
+                        .Where(mc.MovieId == Row.MovieId.Value)))
+                {
+                    new DeleteRequestHandler<Entities.MovieCastRow>().Process(this.UnitOfWork,
+                        new DeleteRequest
+                        {
+                            EntityId = detailID
+                        });
+                }
+            }
+        }
 
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow>
         {
