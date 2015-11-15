@@ -43,7 +43,6 @@ namespace MovieTutorial.Northwind.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        [EmbeddedFileUploadBehaviour("ProductImage", fileNameFormat: "ProductImage/{1:00000}/{0:00000000}_{2}", copyFileToHistory: true)]
         private class MySaveHandler : SaveRequestHandler<MyRow>
         {
         }
