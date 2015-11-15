@@ -830,6 +830,7 @@
       <DependentUpon>ScriptFormatterTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20151025_170200_PersonAndMovieCast.cs" />
+    <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20151115_202100_PrimaryGalleryImages.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150924_154100_SampleGenres.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150924_151600_GenreTable.cs" />
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20150924_142200_MovieKind.cs" />
