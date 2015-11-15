@@ -10,7 +10,7 @@ namespace MovieTutorial.MovieDB.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), DisplayName("Person"), InstanceName("Person"), TwoLevelCached]
+    [ConnectionKey("Default"), DisplayName("Persons"), InstanceName("Person"), TwoLevelCached]
     [ReadPermission("Administration")]
     [ModifyPermission("Administration")]
     [JsonConverter(typeof(JsonRowConverter))]

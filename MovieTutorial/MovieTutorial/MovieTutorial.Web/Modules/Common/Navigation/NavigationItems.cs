@@ -10,6 +10,7 @@ using Common = MovieTutorial.Common.Pages;
 [assembly: NavigationMenu(2000, "Movie Database", icon: "icon-film")]
 [assembly: NavigationLink(2100, "Movie Database/Movies", typeof(MovieDB.MovieController), icon: "icon-camcorder")]
 [assembly: NavigationLink(2200, "Movie Database/Genres", typeof(MovieDB.GenreController), icon: "icon-pin")]
+[assembly: NavigationLink(2300, "Movie Database/Persons", typeof(MovieDB.PersonController), icon: "icon-user")]
 
 [assembly: NavigationMenu(8000, "Northwind", icon: "icon-anchor")]
 [assembly: NavigationLink(8200, "Northwind/Customers", typeof(Northwind.CustomerController), icon: "icon-wallet")]

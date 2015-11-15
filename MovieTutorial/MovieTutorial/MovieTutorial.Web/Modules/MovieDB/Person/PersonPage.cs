@@ -1,7 +1,4 @@
 ﻿
-
-[assembly:Serenity.Navigation.NavigationLink(int.MaxValue, "MovieDB/Person", typeof(MovieTutorial.MovieDB.Pages.PersonController))]
-
 namespace MovieTutorial.MovieDB.Pages
 {
     using Serenity;
