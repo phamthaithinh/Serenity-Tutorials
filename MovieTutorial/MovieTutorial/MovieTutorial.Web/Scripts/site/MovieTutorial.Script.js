@@ -600,7 +600,12 @@
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.PersonDialog
 	var $MovieTutorial_MovieDB_PersonDialog = function() {
+		this.$moviesGrid = null;
 		ss.makeGenericType(Serenity.EntityDialog$1, [Object]).call(this);
+		this.$moviesGrid = new $MovieTutorial_MovieDB_PersonMovieGrid(this.byId$1('MoviesGrid'));
+		this.tabs.bind('tabsactivate', ss.mkdel(this, function(e, i) {
+			this.arrange();
+		}));
 	};
 	$MovieTutorial_MovieDB_PersonDialog.__typeName = 'MovieTutorial.MovieDB.PersonDialog';
 	global.MovieTutorial.MovieDB.PersonDialog = $MovieTutorial_MovieDB_PersonDialog;
@@ -618,6 +623,13 @@
 	};
 	$MovieTutorial_MovieDB_PersonGrid.__typeName = 'MovieTutorial.MovieDB.PersonGrid';
 	global.MovieTutorial.MovieDB.PersonGrid = $MovieTutorial_MovieDB_PersonGrid;
+	////////////////////////////////////////////////////////////////////////////////
+	// MovieTutorial.MovieDB.PersonMovieGrid
+	var $MovieTutorial_MovieDB_PersonMovieGrid = function(container) {
+		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
+	};
+	$MovieTutorial_MovieDB_PersonMovieGrid.__typeName = 'MovieTutorial.MovieDB.PersonMovieGrid';
+	global.MovieTutorial.MovieDB.PersonMovieGrid = $MovieTutorial_MovieDB_PersonMovieGrid;
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.Northwind.CategoryDialog
 	var $MovieTutorial_Northwind_CategoryDialog = function() {
@@ -1567,6 +1579,7 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_PersonGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
+	ss.initClass($MovieTutorial_MovieDB_PersonMovieGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_Northwind_CategoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CategoryForm, $asm, {
 		get_categoryName: function() {
@@ -2081,6 +2094,7 @@
 	ss.setMetadata($MovieTutorial_MovieDB_MovieKind, { attr: [new Serenity.EnumKeyAttribute('MovieDB.MovieKind')] });
 	ss.setMetadata($MovieTutorial_MovieDB_PersonDialog, { attr: [new Serenity.IdPropertyAttribute('PersonId'), new Serenity.NamePropertyAttribute('Fullname'), new Serenity.FormKeyAttribute('MovieDB.Person'), new Serenity.LocalTextPrefixAttribute('MovieDB.Person'), new Serenity.ServiceAttribute('MovieDB/Person')] });
 	ss.setMetadata($MovieTutorial_MovieDB_PersonGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.Person'), new Serenity.IdPropertyAttribute('PersonId'), new Serenity.NamePropertyAttribute('Firstname'), new Serenity.DialogTypeAttribute($MovieTutorial_MovieDB_PersonDialog), new Serenity.LocalTextPrefixAttribute('MovieDB.Person'), new Serenity.ServiceAttribute('MovieDB/Person')] });
+	ss.setMetadata($MovieTutorial_MovieDB_PersonMovieGrid, { attr: [new Serenity.ColumnsKeyAttribute('MovieDB.PersonMovie'), new Serenity.IdPropertyAttribute('MovieCastId'), new Serenity.LocalTextPrefixAttribute('MovieDB.MovieCast'), new Serenity.ServiceAttribute('MovieDB/MovieCast')] });
 	ss.setMetadata($MovieTutorial_Northwind_CategoryDialog, { attr: [new Serenity.IdPropertyAttribute('CategoryID'), new Serenity.NamePropertyAttribute('CategoryName'), new Serenity.FormKeyAttribute('Northwind.Category'), new Serenity.LocalTextPrefixAttribute('Northwind.Category'), new Serenity.ServiceAttribute('Northwind/Category')] });
 	ss.setMetadata($MovieTutorial_Northwind_CategoryGrid, { attr: [new Serenity.ColumnsKeyAttribute('Northwind.Category'), new Serenity.IdPropertyAttribute('CategoryID'), new Serenity.NamePropertyAttribute('CategoryName'), new Serenity.DialogTypeAttribute($MovieTutorial_Northwind_CategoryDialog), new Serenity.LocalTextPrefixAttribute('Northwind.Category'), new Serenity.ServiceAttribute('Northwind/Category')] });
 	ss.setMetadata($MovieTutorial_Northwind_CustomerCustomerDemoDialog, { attr: [new Serenity.IdPropertyAttribute('ID'), new Serenity.NamePropertyAttribute('CustomerID'), new Serenity.FormKeyAttribute('Northwind.CustomerCustomerDemo'), new Serenity.LocalTextPrefixAttribute('Northwind.CustomerCustomerDemo'), new Serenity.ServiceAttribute('Northwind/CustomerCustomerDemo')] });

@@ -299,6 +299,7 @@
     <Compile Include="Membership\LoginPanel.cs" />
     <Compile Include="MovieDB\MovieCast\MovieCastEditDialog.cs" />
     <Compile Include="MovieDB\MovieCast\MovieCastEditor.cs" />
+    <Compile Include="MovieDB\Person\PersonMovieGrid.cs" />
     <Compile Include="Northwind\Shared\PhoneEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptInitialization.cs" />

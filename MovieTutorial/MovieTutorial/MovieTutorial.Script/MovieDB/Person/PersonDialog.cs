@@ -9,5 +9,13 @@ namespace MovieTutorial.MovieDB
     [FormKey(PersonForm.FormKey), LocalTextPrefix(PersonRow.LocalTextPrefix), Service(PersonService.BaseUrl)]
     public class PersonDialog : EntityDialog<PersonRow>
     {
+        private PersonMovieGrid moviesGrid;
+
+        public PersonDialog()
+        {
+            moviesGrid = new PersonMovieGrid(this.ById("MoviesGrid"));
+
+            tabs.OnActivate += (e, i) => this.Arrange();
+        }
     }
 }
