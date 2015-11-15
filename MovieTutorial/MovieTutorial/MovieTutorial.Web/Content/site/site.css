@@ -1102,9 +1102,6 @@ a,
 .s-MovieDialog .s-PropertyGrid .categories {
   height: 400px;
 }
-/* ------------------------------------------------------------------------- */
-/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
-/* ------------------------------------------------------------------------- */
 .s-GenreDialog > .size {
   min-width: 650px;
   width: 650px;
@@ -1146,6 +1143,8 @@ a,
 .s-PersonDialog > .size {
   min-width: 650px;
   width: 650px;
+  min-height: 400px;
+  height: 400px;
 }
 .s-PersonDialog .tab-pane {
   height: auto;
@@ -1180,6 +1179,15 @@ a,
 }
 .s-PersonDialog .s-PropertyGrid .categories {
   height: 260px;
+}
+.s-PersonDialog .ui-dialog-content {
+  overflow: hidden;
+}
+.s-PersonDialog .tab-pane.s-TabMovies {
+  padding: 5px;
+}
+.s-PersonDialog .s-PersonMovieGrid > .grid-container {
+  height: 315px;
 }
 .s-MovieCastEditDialog > .size {
   min-width: 550px;
