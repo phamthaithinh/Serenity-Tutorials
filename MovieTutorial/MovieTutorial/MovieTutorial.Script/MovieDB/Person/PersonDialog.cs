@@ -17,5 +17,12 @@ namespace MovieTutorial.MovieDB
 
             tabs.OnActivate += (e, i) => this.Arrange();
         }
+
+        protected override void AfterLoadEntity()
+        {
+            base.AfterLoadEntity();
+
+            moviesGrid.PersonID = (int?)this.EntityId;
+        }
     }
 }

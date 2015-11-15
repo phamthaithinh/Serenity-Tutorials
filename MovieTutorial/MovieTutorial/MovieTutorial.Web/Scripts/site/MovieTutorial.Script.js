@@ -626,6 +626,7 @@
 	////////////////////////////////////////////////////////////////////////////////
 	// MovieTutorial.MovieDB.PersonMovieGrid
 	var $MovieTutorial_MovieDB_PersonMovieGrid = function(container) {
+		this.$personID = null;
 		ss.makeGenericType(Serenity.EntityGrid$1, [Object]).call(this, container);
 	};
 	$MovieTutorial_MovieDB_PersonMovieGrid.__typeName = 'MovieTutorial.MovieDB.PersonMovieGrid';
@@ -1557,7 +1558,12 @@
 		}
 	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initEnum($MovieTutorial_MovieDB_MovieKind, $asm, { Film: 1, TvSeries: 2, MiniSeries: 3 });
-	ss.initClass($MovieTutorial_MovieDB_PersonDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
+	ss.initClass($MovieTutorial_MovieDB_PersonDialog, $asm, {
+		afterLoadEntity: function() {
+			ss.makeGenericType(Serenity.EntityDialog$2, [Object, Object]).prototype.afterLoadEntity.call(this);
+			this.$moviesGrid.set_personID(this.get_entityId());
+		}
+	}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog]);
 	ss.initClass($MovieTutorial_MovieDB_PersonForm, $asm, {
 		get_firstname: function() {
 			return this.byId(Serenity.StringEditor).call(this, 'Firstname');
@@ -1579,7 +1585,30 @@
 		}
 	}, Serenity.PrefixedContext);
 	ss.initClass($MovieTutorial_MovieDB_PersonGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
-	ss.initClass($MovieTutorial_MovieDB_PersonMovieGrid, $asm, {}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
+	ss.initClass($MovieTutorial_MovieDB_PersonMovieGrid, $asm, {
+		getButtons: function() {
+			return null;
+		},
+		getInitialTitle: function() {
+			return null;
+		},
+		usePager: function() {
+			return false;
+		},
+		getGridCanLoad: function() {
+			return ss.isValue(this.$personID);
+		},
+		get_personID: function() {
+			return this.$personID;
+		},
+		set_personID: function(value) {
+			if (!ss.referenceEquals(this.$personID, value)) {
+				this.$personID = value;
+				this.setEquality('PersonId', value);
+				this.refresh();
+			}
+		}
+	}, ss.makeGenericType(Serenity.EntityGrid$1, [Object]), [Serenity.IDataGrid]);
 	ss.initClass($MovieTutorial_Northwind_CategoryDialog, $asm, {}, ss.makeGenericType(Serenity.EntityDialog$1, [Object]), [Serenity.IDialog, Serenity.IEditDialog, Serenity.IAsyncInit]);
 	ss.initClass($MovieTutorial_Northwind_CategoryForm, $asm, {
 		get_categoryName: function() {
