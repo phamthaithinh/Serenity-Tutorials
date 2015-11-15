@@ -18,6 +18,8 @@ namespace MovieTutorial.MovieDB.Forms
         public String Description { get; set; }
         [MovieCastEditor]
         public List<Entities.MovieCastRow> CastList { get; set; }
+        public String PrimaryImage { get; set; }
+        public String GalleryImages { get; set; }
         [TextAreaEditor(Rows = 8)]
         public String Storyline { get; set; }
         public Int32 Year { get; set; }

@@ -1141,10 +1141,10 @@ a,
   height: 260px;
 }
 .s-PersonDialog > .size {
-  min-width: 650px;
-  width: 650px;
-  min-height: 400px;
-  height: 400px;
+  min-width: 700px;
+  width: 700px;
+  min-height: 600px;
+  height: 600px;
 }
 .s-PersonDialog .tab-pane {
   height: auto;
@@ -1153,32 +1153,32 @@ a,
   width: 150px;
 }
 .s-PersonDialog .editor {
-  width: 400px;
+  width: 450px;
 }
 .s-PersonDialog input.editor[type=checkbox] {
   width: auto;
 }
 .s-PersonDialog .s-Form .editor.dateQ {
-  width: 383px;
+  width: 433px;
 }
 .s-PersonDialog .s-Form .editor.emailuser {
   width: 170px;
 }
 .s-PersonDialog .s-Form .editor.dateQ.s-DateTimeEditor {
-  width: 323px;
+  width: 373px;
 }
 .s-PersonDialog .s-Form .editor.s-DateTimeEditor.time {
   width: 56px;
   margin-left: 4px;
 }
 .s-PersonDialog .s-Form .editor.has-inplace-button {
-  width: 374px;
+  width: 424px;
 }
 .s-PersonDialog .s-Form .emaildomain {
-  width: 215px;
+  width: 265px;
 }
 .s-PersonDialog .s-PropertyGrid .categories {
-  height: 260px;
+  height: 460px;
 }
 .s-PersonDialog .ui-dialog-content {
   overflow: hidden;
@@ -1187,7 +1187,7 @@ a,
   padding: 5px;
 }
 .s-PersonDialog .s-PersonMovieGrid > .grid-container {
-  height: 315px;
+  height: 515px;
 }
 .s-MovieCastEditDialog > .size {
   min-width: 550px;
